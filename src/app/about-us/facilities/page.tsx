@@ -1,211 +1,220 @@
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { 
+  Building2, 
+  Warehouse, 
+  FlaskConical, 
+  PackageCheck, 
+  Sun, 
+  ShieldCheck, 
+  CheckCircle2,
+  Video
+} from "lucide-react";
 
 export default function FacilitiesPage() {
   return (
-    <div className="bg-white">
+    <div className="bg-white min-h-screen">
       {/* Hero Section */}
-      <div className="relative h-[28rem] md:h-[32rem] bg-gradient-to-br from-lime-100 via-amber-100 to-white overflow-hidden border border-gray-200 shadow-lg">
-  <Image
-    src="/images/manufacturing-facility.jpg"
-    alt="Modern Ayurvedic manufacturing facility with stainless steel equipment and traditional herbs"
-    fill
-    className="object-cover opacity-50 mix-blend-luminosity"
-    priority
-    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-  />
-  {/* Soft white to transparent overlay for text clarity */}
-  <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/40 to-transparent" />
+      <section className="relative h-[28rem] md:h-[36rem] overflow-hidden">
+        <Image
+          src="/images/manufacturing-facility.jpg"
+          alt="Modern Ayurvedic manufacturing facility"
+          fill
+          className="object-cover opacity-60"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-950/90 via-amber-950/40 to-transparent" />
+        
+        <div className="absolute inset-0 flex items-center px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl">
+            <Badge variant="secondary" className="mb-6 bg-lime-100 text-lime-800 hover:bg-lime-200 border-none px-4 py-1 text-sm font-semibold">
+              WHO-GMP CERTIFIED
+            </Badge>
+            <h1 className="text-4xl md:text-7xl font-extrabold text-white mb-6 tracking-tight leading-none">
+              Modern <span className="text-amber-400">Manufacturing</span> Excellence
+            </h1>
+            <p className="text-xl md:text-2xl text-amber-50 font-medium leading-relaxed max-w-2xl mb-10">
+              Where 5,000 years of Ayurvedic tradition meets cutting-edge pharmaceutical technology and rigorous quality standards.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Button size="lg" className="bg-lime-700 hover:bg-lime-800 text-white rounded-full px-8 py-6 text-lg">
+                <Video className="w-5 h-5 mr-2" />
+                Take Virtual Tour
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <div className="absolute inset-0 flex items-center justify-center text-center px-4">
-    <div className="max-w-4xl px-6">
-      <h1 className="text-3xl sm:text-5xl font-serif font-bold text-amber-900 mb-4 drop-shadow-sm">
-        Our <span className="text-lime-700">Manufacturing</span> Facilities
-      </h1>
-      <p className="text-lg sm:text-xl text-amber-800 leading-relaxed max-w-3xl mx-auto">
-        Where 5,000 years of Ayurvedic tradition meets cutting-edge pharmaceutical technology
-      </p>
-      <div className="mt-6">
-        <button className="px-6 py-3 bg-lime-600 hover:bg-lime-700 text-white font-medium rounded-full transition-all duration-300 shadow-md hover:shadow-lg">
-          Take a Virtual Tour
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-      {/* Content Section */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* GMP Certified Section */}
-        <section className="mb-20">
-          <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="md:w-1/2">
-              <div className="inline-block mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-amber-600 relative">
-                  GMP Certified Facilities
-                  <span className="absolute bottom-0 left-0 w-full h-1 bg-amber-200 transform translate-y-1"></span>
+        <section className="mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h2 className="text-4xl font-bold text-amber-950 leading-tight">
+                  WHO-GMP Certified <br />
+                  <span className="text-amber-600">Kerala Facility</span>
                 </h2>
+                <Separator className="w-24 h-1.5 bg-amber-500 rounded-full" />
               </div>
-              <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-                Our 50,000 sq ft manufacturing unit in Kerala is WHO-GMP certified, combining 
-                traditional Ayurvedic preparation methods with modern pharmaceutical standards.
-                We maintain the purity of ancient formulations while ensuring consistency and 
-                safety through rigorous quality controls.
+              
+              <p className="text-lg text-amber-900/70 leading-relaxed">
+                Our 50,000 sq ft manufacturing unit in Kerala is a testament to our commitment 
+                to quality. We combine traditional preparation methods with modern pharmaceutical 
+                standardization to ensure every product is pure, potent, and safe.
               </p>
-              <div className="flex items-center space-x-4">
-                <Image 
-                  src="/images/gmp-certified-badge.png" 
-                  alt="GMP Certified Badge"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16"
-                />
-                <span className="text-sm text-gray-500">WHO-GMP Certified Since 2010</span>
+
+              <div className="flex items-center gap-6 p-6 bg-amber-50 rounded-2xl border border-amber-100 shadow-sm">
+                <div className="w-20 h-20 relative bg-white rounded-xl p-2 shadow-sm shrink-0">
+                  <Image 
+                    src="/images/gmp-certified-badge.png" 
+                    alt="GMP Certified Badge"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-bold text-amber-950">Excellence in Standards</h4>
+                  <p className="text-sm text-amber-900/60">WHO-GMP Certified Excellence Since 2010</p>
+                </div>
               </div>
             </div>
-            <div className="md:w-1/2">
-              <div className="relative rounded-xl overflow-hidden shadow-2xl">
+            
+            <Card className="border-none shadow-2xl overflow-hidden rounded-3xl">
+              <div className="relative aspect-[4/3]">
                 <Image
                   src="/images/facility-interior.jpg"
-                  alt="Clean, modern facility interior with stainless steel equipment"
-                  width={800}
-                  height={500}
-                  className="w-full h-auto"
+                  alt="Modern facility interior"
+                  fill
+                  className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
-            </div>
+            </Card>
           </div>
         </section>
 
-        {/* Key Features Section */}
-        <section className="my-20">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-amber-600 inline-block relative">
-              World-Class <span className="text-amber-700">Facility</span> Features
-              <span className="absolute bottom-0 left-0 w-full h-1 bg-amber-200 transform translate-y-1"></span>
-            </h2>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: (
-                  <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                  </svg>
-                ),
-                title: "Dedicated Production Zones",
-                description: "Separate areas for each preparation type with specialized equipment"
-              },
-              {
-                icon: (
-                  <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
-                  </svg>
-                ),
-                title: "Climate-Controlled Storage",
-                description: "Preserves herb potency with optimal temperature and humidity"
-              },
-              {
-                icon: (
-                  <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-                  </svg>
-                ),
-                title: "Advanced Laboratories",
-                description: "In-house testing for purity, potency, and heavy metal screening"
-              },
-              {
-                icon: (
-                  <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
-                  </svg>
-                ),
-                title: "Automated Packaging",
-                description: "High-speed lines ensure efficiency and hygiene"
-              },
-              {
-                icon: (
-                  <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                  </svg>
-                ),
-                title: "Solar-Powered Operations",
-                description: "Sustainable energy for 60% of our power needs"
-              },
-              {
-                icon: (
-                  <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                  </svg>
-                ),
-                title: "Quality Assurance",
-                description: "200+ quality checkpoints throughout production"
-              }
-            ].map((feature, index) => (
-              <div key={index} className="bg-amber-50 p-6 rounded-xl hover:shadow-lg transition-all duration-300 group">
-                <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-amber-200 transition-all">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-amber-700 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Production Capabilities */}
-        <section className="my-20">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-amber-600 inline-block relative">
-              Production <span className="text-amber-700">Capabilities</span>
-              <span className="absolute bottom-0 left-0 w-full h-1 bg-amber-200 transform translate-y-1"></span>
-            </h2>
-            <p className="text-xl text-gray-600 mt-4 max-w-3xl mx-auto">
-              We bridge ancient wisdom with modern delivery systems for maximum efficacy
+        {/* Feature Grid */}
+        <section className="mb-32">
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-4xl font-bold text-amber-950">Facility Highlights</h2>
+            <p className="text-lg text-amber-900/60 max-w-2xl mx-auto">
+              Precision engineered environments designed to maximize herbal extracts and ensure complete purity.
             </p>
           </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <FacilityFeature 
+              icon={<Building2 className="w-8 h-8 text-amber-600" />}
+              title="Production Zones"
+              description="Dedicated zones for specific preparation types with isolated air filtration systems."
+            />
+            <FacilityFeature 
+              icon={<Warehouse className="w-8 h-8 text-amber-600" />}
+              title="Climate Storage"
+              description="Advanced humidity and temperature control to preserve herb active principles."
+            />
+            <FacilityFeature 
+              icon={<FlaskConical className="w-8 h-8 text-amber-600" />}
+              title="State-of-the-Art Labs"
+              description="In-house analytical testing for chemical and microbiological purity."
+            />
+            <FacilityFeature 
+              icon={<PackageCheck className="w-8 h-8 text-amber-600" />}
+              title="Automated Lines"
+              description="Precision packaging systems to maintain complete hygiene and batch consistency."
+            />
+            <FacilityFeature 
+              icon={<Sun className="w-8 h-8 text-amber-600" />}
+              title="Renewable Power"
+              description="Driven by 60% solar energy, minimizing our carbon footprint and respecting nature."
+            />
+            <FacilityFeature 
+              icon={<ShieldCheck className="w-8 h-8 text-amber-600" />}
+              title="Quality Control"
+              description="Over 200 rigorous quality checkpoints from raw material to finished product."
+            />
+          </div>
+        </section>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Classical Preparations",
-                items: ["Asavas", "Arishtas", "Lehyams", "Churnas", "Ghritas", "Tailams"],
-                bg: "bg-amber-50",
-                border: "border-amber-200"
-              },
-              {
-                title: "Modern Formats",
-                items: ["Tablets", "Capsules", "Softgels", "Syrups", "Granules", "Lozenges"],
-                bg: "bg-lime-50",
-                border: "border-lime-200"
-              },
-              {
-                title: "Topical Applications",
-                items: ["Medicated Oils", "Creams", "Balms", "Gels", "Pastes", "Ubtans"],
-                bg: "bg-orange-50",
-                border: "border-orange-200"
-              }
-            ].map((category, index) => (
-              <div key={index} className={`border ${category.border} ${category.bg} p-6 rounded-xl hover:shadow-md transition-all`}>
-                <h3 className="text-xl font-semibold text-amber-700 mb-4 pb-2 border-b border-amber-100">{category.title}</h3>
-                <ul className="grid grid-cols-2 gap-2">
-                  {category.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-center py-2">
-                      <svg className="w-4 h-4 text-amber-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                      </svg>
-                      <span className="text-gray-700">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+        {/* Categories Section */}
+        <section>
+          <div className="bg-amber-950 rounded-[3rem] px-8 py-20 text-white shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-12 opacity-10 pointer-events-none">
+              <Building2 className="w-64 h-64" />
+            </div>
+            
+            <div className="text-center mb-16 relative z-10">
+              <h2 className="text-4xl font-bold mb-4">Production Capabilities</h2>
+              <p className="text-amber-200/70 text-lg max-w-2xl mx-auto">
+                Comprehensive manufacturing across all traditional and modern Ayurvedic formats.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+              <CapabilityCard 
+                title="Classical"
+                items={["Asavas & Arishtas", "Lehyams & Churnas", "Ghritas & Tailams"]}
+                color="border-amber-500/30 bg-amber-900/40"
+              />
+              <CapabilityCard 
+                title="Modern"
+                items={["Tablets & Capsules", "Syrups & Granules", "Softgels & Lozenges"]}
+                color="border-lime-500/30 bg-lime-900/20"
+              />
+              <CapabilityCard 
+                title="Topical"
+                items={["Medicated Oils", "Creams & Balms", "Ubtans & Pastes"]}
+                color="border-orange-500/30 bg-orange-900/20"
+              />
+            </div>
           </div>
         </section>
       </div>
     </div>
+  );
+}
+
+function FacilityFeature({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
+  return (
+    <Card className="border-amber-100 hover:border-lime-300 shadow-sm hover:shadow-xl transition-all duration-300 group rounded-2xl p-8">
+      <div className="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-lime-50 group-hover:scale-110 transition-all duration-300">
+        {icon}
+      </div>
+      <CardHeader className="p-0 mb-3">
+        <CardTitle className="text-2xl font-bold text-amber-950 tracking-tight group-hover:text-lime-700 transition-colors">
+          {title}
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="p-0">
+        <p className="text-amber-900/60 leading-relaxed italic">
+          "{description}"
+        </p>
+      </CardContent>
+    </Card>
+  );
+}
+
+function CapabilityCard({ title, items, color }: { title: string; items: string[]; color: string }) {
+  return (
+    <Card className={`border ${color} backdrop-blur-sm shadow-xl p-8 rounded-2xl`}>
+      <CardTitle className="text-2xl font-bold mb-6 flex items-center gap-2">
+        <div className="w-2 h-2 rounded-full bg-amber-400" />
+        {title} Preparations
+      </CardTitle>
+      <ul className="space-y-4">
+        {items.map((item, idx) => (
+          <li key={idx} className="flex items-center gap-3 text-amber-100/80">
+            <CheckCircle2 className="w-5 h-5 text-lime-400 shrink-0" />
+            <span className="font-medium">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </Card>
   );
 }

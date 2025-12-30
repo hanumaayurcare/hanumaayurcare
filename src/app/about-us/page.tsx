@@ -1,115 +1,120 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { 
+  History, 
+  Sparkles, 
+  Building2, 
+  Users2, 
+  ShieldCheck, 
+  ArrowRight 
+} from 'lucide-react';
 
 export default function AboutUs() {
   return (
-    <div className="bg-white">
+    <div className="bg-white min-h-screen">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-amber-100 via-lime-100 to-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold text-amber-900 mb-6">About Our Ayurvedic Heritage</h1>
-          <p className="text-xl text-amber-700 max-w-3xl mx-auto">
-            Discover our journey, traditions, and commitment to authentic Ayurvedic wellness
+      <section className="relative bg-gradient-to-br from-amber-50 via-lime-50 to-white py-24 overflow-hidden">
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-amber-200/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-lime-200/20 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-amber-950 mb-6 tracking-tight">
+            Our Ayurvedic <span className="text-lime-700">Heritage</span>
+          </h1>
+          <p className="text-xl text-amber-900/80 max-w-2xl mx-auto leading-relaxed">
+            Discover our journey, traditions, and unwavering commitment to bringing 
+            the 5,000-year-old wisdom of Ayurveda to the modern world.
           </p>
         </div>
-      </div>
+      </section>
 
       {/* Navigation Cards */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <AboutCard 
-          title="Our Story" 
-          description="Journey from humble beginnings to Ayurvedic leaders"
-          href="/about-us/company-story"
-          icon={
-            <svg className="w-10 h-10 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-            </svg>
-          }
-        />
-        
-        <AboutCard 
-          title="Our Heritage" 
-          description="5000 years of Ayurvedic wisdom in our formulations"
-          href="/about-us/heritage"
-          icon={
-            <svg className="w-10 h-10 text-lime-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-            </svg>
-          }
-        />
-        
-        <AboutCard 
-          title="Our Facilities" 
-          description="State-of-the-art GMP certified manufacturing"
-          href="/about-us/facilities"
-          icon={
-            <svg className="w-10 h-10 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-            </svg>
-          }
-        />
-        
-        <AboutCard 
-          title="Our Team" 
-          description="Meet the experts behind our formulations"
-          href="/about-us/team"
-          icon={
-            <svg className="w-10 h-10 text-lime-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-          }
-        />
-        
-        <AboutCard 
-          title="Our Standards" 
-          description="Rigorous quality control and certifications"
-          href="/about-us/standards"
-          icon={
-            <svg className="w-10 h-10 text-lime-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-          }
-        />
-      </div>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <AboutLinkCard 
+            title="Our Story" 
+            description="The evolution from a humble pharmacy in Kerala to a trusted name in Ayurvedic wellness."
+            href="/about-us/company-story"
+            icon={<History className="w-8 h-8 text-amber-600" />}
+          />
+          
+          <AboutLinkCard 
+            title="Our Heritage" 
+            description="Rooted in deep traditional knowledge and centuries of ancestral wisdom."
+            href="/about-us/heritage"
+            icon={<Sparkles className="w-8 h-8 text-lime-600" />}
+          />
+          
+          <AboutLinkCard 
+            title="Our Facilities" 
+            description="Our state-of-the-art, GMP-certified manufacturing unit ensuring purity in every drop."
+            href="/about-us/facilities"
+            icon={<Building2 className="w-8 h-8 text-amber-600" />}
+          />
+          
+          <AboutLinkCard 
+            title="Our Team" 
+            description="Dedicated Ayurvedic practitioners and scientists crafting your wellness journey."
+            href="/about-us/team"
+            icon={<Users2 className="w-8 h-8 text-lime-600" />}
+          />
+          
+          <AboutLinkCard 
+            title="Our Standards" 
+            description="Rigorous quality control and international certifications for ultimate trust."
+            href="/about-us/standards"
+            icon={<ShieldCheck className="w-8 h-8 text-amber-600" />}
+          />
+        </div>
+      </section>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-br from-amber-100 via-lime-100 to-white py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-amber-900 mb-6">Experience Authentic Ayurveda</h2>
-          <p className="text-lg text-amber-700 mb-8">
-            Our commitment to purity and tradition makes our products truly special. 
-            Discover the difference of genuine Ayurvedic formulations.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/products" className="px-6 py-3 bg-lime-600 text-white font-medium rounded-lg hover:bg-lime-700 transition-colors">
-              Explore Our Products
-            </Link>
-            <Link href="/contact" className="px-6 py-3 border border-amber-600 text-amber-600 font-medium rounded-lg hover:bg-amber-50 transition-colors">
-              Contact Our Experts
-            </Link>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <Card className="bg-gradient-to-r from-amber-600/5 to-lime-600/5 border-none shadow-xl overflow-hidden">
+          <div className="px-8 py-16 text-center">
+            <h2 className="text-4xl font-bold text-amber-950 mb-6">Experience Authentic Ayurveda</h2>
+            <p className="text-lg text-amber-900/70 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Our commitment to purity and traditional wisdom makes our products truly restoration. 
+              Discover the transformative power of genuine Ayurvedic formulations today.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button asChild size="lg" className="bg-lime-700 hover:bg-lime-800 text-white shadow-lg shadow-lime-700/20">
+                <Link href="/products">Explore Our Products</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="border-amber-600 text-amber-700 hover:bg-amber-50 shadow-md">
+                <Link href="/contact">Consult Our Experts</Link>
+              </Button>
+            </div>
           </div>
-        </div>
-      </div>
+        </Card>
+      </section>
     </div>
   );
 }
 
-function AboutCard({ title, description, href, icon }: { title: string; description: string; href: string; icon: React.ReactNode }) {
+function AboutLinkCard({ title, description, href, icon }: { title: string; description: string; href: string; icon: React.ReactNode }) {
   return (
-    <Link href={href} className="group">
-      <div className="bg-white p-6 rounded-lg shadow-md h-full flex flex-col items-center text-center hover:shadow-lg transition-shadow">
-        <div className="mb-4 p-3 bg-lime-50 rounded-full">
-          {icon}
-        </div>
-        <h3 className="text-xl font-semibold text-amber-800 mb-2 group-hover:text-lime-600 transition-colors">{title}</h3>
-        <p className="text-gray-600 flex-grow">{description}</p>
-        <div className="mt-4 text-lime-600 font-medium flex items-center">
-          Learn more
-          <svg className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </div>
-      </div>
+    <Link href={href} className="group block h-full">
+      <Card className="h-full border-amber-100/50 hover:border-lime-300 hover:shadow-2xl hover:shadow-lime-100 transition-all duration-300 transform group-hover:-translate-y-1 overflow-hidden">
+        <CardHeader className="flex flex-col items-center text-center pt-8">
+          <div className="mb-4 p-4 bg-amber-50 rounded-2xl group-hover:bg-lime-50 group-hover:scale-110 transition-all duration-300">
+            {icon}
+          </div>
+          <CardTitle className="text-2xl font-bold text-amber-900 group-hover:text-lime-700 transition-colors">
+            {title}
+          </CardTitle>
+          <CardDescription className="text-amber-800/60 mt-2 leading-relaxed">
+            {description}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex justify-center pb-8 pt-0">
+          <div className="inline-flex items-center text-lime-700 font-semibold group-hover:gap-2 transition-all">
+            <span>Learn More</span>
+            <ArrowRight className="w-4 h-4 ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+          </div>
+        </CardContent>
+      </Card>
     </Link>
   );
 }

@@ -1,6 +1,20 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { 
+  Users2, 
+  Stethoscope, 
+  Briefcase, 
+  Beaker, 
+  ShieldCheck, 
+  Mail, 
+  Linkedin,
+  Sparkles
+} from "lucide-react";
 
 export default function TeamPage() {
   const teamMembers = [
@@ -8,155 +22,133 @@ export default function TeamPage() {
       name: "Dr. A",
       title: "Founder & Chief Formulator",
       bio: "With over 40 years of experience in Ayurveda, Dr. Verma trained under renowned Vaidyas in Kerala and holds a PhD in Ayurvedic Pharmacology.",
-      image: "/images/team/dr-verma.jpg"
+      image: "/images/team/dr-verma.jpg",
+      icon: <Stethoscope className="w-4 h-4" />
     },
     {
       name: "B",
       title: "CEO",
       bio: "Combines modern business education with deep Ayurvedic knowledge to guide the company's strategic direction.",
-      image: "/images/team/ananya-verma.jpg"
+      image: "/images/team/ananya-verma.jpg",
+      icon: <Briefcase className="w-4 h-4" />
     },
     {
       name: "C",
       title: "Head of Research",
       bio: "Leads our product development team with expertise in both Ayurvedic and modern pharmacology.",
-      image: "/images/team/dr-nair.jpg"
+      image: "/images/team/dr-nair.jpg",
+      icon: <Beaker className="w-4 h-4" />
     },
     {
       name: "D",
       title: "Head of Quality",
       bio: "Ensures all products meet our rigorous standards with 20 years of experience in herbal quality control.",
-      image: "/images/team/arjun-menon.jpg"
+      image: "/images/team/arjun-menon.jpg",
+      icon: <ShieldCheck className="w-4 h-4" />
     }
   ];
 
-  const [showContactModal, setShowContactModal] = useState(false);
-
-  const handleContactButtonClick = () => {
-    setShowContactModal(!showContactModal);
-  };
-
   return (
-    <div className="bg-white text-gray-800">
+    <div className="bg-white min-h-screen">
       {/* Hero Section */}
-      <div className="relative h-[28rem] bg-gradient-to-br from-amber-100 via-lime-100 to-white overflow-hidden">
+      <section className="relative h-[24rem] md:h-[32rem] overflow-hidden bg-amber-950">
         <Image
           src="/images/team-hero.jpg"
           alt="Our Team"
           fill
-          className="object-cover opacity-50 mix-blend-multiply"
+          className="object-cover opacity-40"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-white/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
         <div className="absolute inset-0 flex items-center justify-center text-center px-4">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl font-serif font-bold text-amber-900 drop-shadow-sm mb-4">
-              Our Leadership Team
+          <div className="max-w-4xl">
+            <Badge variant="outline" className="mb-6 border-white/20 text-white bg-white/10 backdrop-blur-sm px-4 py-1">
+              MEET THE VISIONARIES
+            </Badge>
+            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
+              Our Leadership <span className="text-amber-400">Team</span>
             </h1>
-            <p className="text-lg sm:text-xl text-amber-700 font-light leading-relaxed">
-              Experts combining traditional wisdom with modern science
+            <p className="text-xl md:text-2xl text-amber-50 font-medium leading-relaxed max-w-2xl mx-auto">
+              A collective of experts bridging traditional Vedic wisdom with modern scientific rigor.
             </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Content */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+      {/* Main Content */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-24">
         {/* Intro */}
-        <div className="prose prose-lg max-w-4xl text-gray-800 mx-auto text-center">
-          <h2 className="text-3xl font-bold text-amber-700">Meet Our Experts</h2>
-          <p>
-            Our leadership team brings together decades of experience in Ayurveda,
-            modern medicine, and ethical business practices to deliver authentic,
-            effective wellness solutions.
+        <div className="max-w-3xl mx-auto text-center space-y-8">
+          <div className="inline-flex items-center justify-center p-3 bg-amber-50 rounded-2xl mb-4">
+            <Users2 className="w-8 h-8 text-amber-700" />
+          </div>
+          <h2 className="text-4xl font-bold text-amber-950">Authenticity Driven by Experience</h2>
+          <p className="text-xl text-amber-900/70 leading-relaxed italic">
+            "Our leadership team brings together decades of experience in Ayurveda, 
+            modern medicine, and ethical business practices to deliver authentic, 
+            effective wellness solutions for the global community."
           </p>
         </div>
 
-        {/* Team Members in Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {/* Team Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {teamMembers.map((member, index) => (
-            <div
-              key={index}
-              className="bg-amber-50 hover:bg-amber-100 transition p-6 rounded-xl shadow-sm flex flex-col items-center gap-6"
-            >
-              <Image
-                src={member.image}
-                alt={member.name}
-                width={200}
-                height={200}
-                className="rounded-full object-cover border-4 border-amber-200"
-              />
-              <div>
-                <h3 className="text-xl font-semibold text-amber-800">{member.name}</h3>
-                <p className="text-sm text-lime-700 mb-2">{member.title}</p>
-                <p className="text-gray-700 text-base leading-relaxed">{member.bio}</p>
-              </div>
-            </div>
+            <Card key={index} className="border-amber-100 hover:border-lime-300 shadow-sm hover:shadow-2xl transition-all duration-500 group rounded-[2.5rem] overflow-hidden">
+              <CardHeader className="flex flex-col items-center pt-10 pb-6 space-y-4">
+                <div className="relative">
+                  <Avatar className="w-32 h-32 border-4 border-white shadow-xl group-hover:scale-105 transition-transform duration-500">
+                    <AvatarImage src={member.image} alt={member.name} className="object-cover" />
+                    <AvatarFallback className="bg-amber-100 text-amber-700 text-2xl font-bold">
+                      {member.name.substring(0, 2)}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="absolute -bottom-2 -right-2 p-2 bg-lime-600 rounded-full text-white shadow-lg border-2 border-white">
+                    {member.icon}
+                  </div>
+                </div>
+                <div className="text-center group-hover:translate-y-[-4px] transition-transform duration-300">
+                  <CardTitle className="text-2xl font-bold text-amber-900">{member.name}</CardTitle>
+                  <Badge variant="secondary" className="mt-2 bg-amber-50 text-amber-700 hover:bg-amber-100 border-none">
+                    {member.title}
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent className="px-8 pb-10">
+                <p className="text-amber-800/70 text-center leading-relaxed mb-6 font-medium">
+                  {member.bio}
+                </p>
+                <div className="flex justify-center gap-4 pt-4 border-t border-amber-50">
+                  <Button variant="ghost" size="icon" className="rounded-full text-amber-700 hover:bg-amber-50">
+                    <Linkedin className="w-5 h-5" />
+                  </Button>
+                  <Button variant="ghost" size="icon" className="rounded-full text-amber-700 hover:bg-amber-50">
+                    <Mail className="w-5 h-5" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
-        {/* Advisory Board */}
-        <div className="prose prose-lg max-w-4xl text-gray-800 mx-auto text-center">
-          <h2 className="text-3xl font-bold text-amber-700">Our Advisory Board</h2>
-          <p>
-            We're guided by a panel of respected Ayurvedic physicians, modern medical doctors,
-            and wellness experts who review our formulations and practices.
-          </p>
-        </div>
-      </section>
-
-      {/* Floating Contact Button */}
-      <div
-        className="fixed bottom-8 right-8 bg-amber-600 text-white py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-110"
-        onClick={handleContactButtonClick}
-      >
-        <span className="font-medium">Contact Us</span>
-      </div>
-
-      {/* Optional Modal for Contact Form (if needed) */}
-      {showContactModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-8 rounded-xl w-full sm:w-96 max-w-lg">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">Get in Touch</h3>
-            {/* Contact form or content */}
-            <form>
-              <div className="mb-4">
-                <label className="block text-gray-700">Your Name</label>
-                <input
-                  type="text"
-                  className="w-full p-3 border border-gray-300 rounded-lg"
-                  placeholder="Enter your name"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700">Email Address</label>
-                <input
-                  type="email"
-                  className="w-full p-3 border border-gray-300 rounded-lg"
-                  placeholder="Enter your email"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700">Message</label>
-                <textarea
-                  className="w-full p-3 border border-gray-300 rounded-lg"
-                  placeholder="Enter your message"
-                  rows={4}
-                ></textarea>
-              </div>
-              <button className="bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded-lg w-full">
-                Send Message
-              </button>
-            </form>
-            <div
-              className="absolute top-2 right-2 text-gray-500 cursor-pointer"
-              onClick={handleContactButtonClick}
-            >
-              X
+        {/* Advisory Board Section */}
+        <section className="bg-gradient-to-br from-amber-50 to-lime-50 rounded-[3rem] p-12 md:p-20 shadow-inner text-center space-y-10 relative overflow-hidden">
+          <Sparkles className="absolute -top-10 -left-10 w-64 h-64 text-lime-200/50 pointer-events-none" />
+          <div className="max-w-4xl mx-auto space-y-6 relative z-10">
+            <h2 className="text-4xl font-bold text-amber-950">Grand Advisory Board</h2>
+            <Separator className="w-24 h-1.5 bg-lime-500 rounded-full mx-auto" />
+            <p className="text-xl text-amber-900/70 leading-relaxed font-medium">
+              We are guided by a panel of respected Ayurvedic physicians, modern medical doctors, 
+              and wellness experts who review our formulations and practices to ensure they meet 
+              the highest clinical and ethical benchmarks.
+            </p>
+            <div className="pt-8">
+              <Button size="lg" className="bg-lime-700 hover:bg-lime-800 text-white rounded-full px-10 py-7 text-lg shadow-xl shadow-lime-700/20">
+                Consult Our Experts
+              </Button>
             </div>
           </div>
-        </div>
-      )}
+        </section>
+      </section>
     </div>
   );
 }

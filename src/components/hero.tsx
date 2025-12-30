@@ -14,7 +14,7 @@ const AyurvedicEnhancedHero = () => {
         </svg>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10 py-4">
+      <div className="max-w-7xl mx-auto px-4 relative z-10 py-4">
         {/* Decorative line with icon */}
         <div className="flex items-center mb-6 md:mb-10">
           <div className="h-px bg-green-700 flex-grow opacity-20"></div>
