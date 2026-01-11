@@ -1,221 +1,213 @@
 "use client";
-import { Mail, Phone, MapPin, Loader2 } from 'lucide-react';
+
 import { useState } from 'react';
-import { supabase } from '@/src/lib/supabaseClient';
-import { Button } from '@/src/components/ui/button';
-import { Input } from '@/src/components/ui/input';
-import { Textarea } from '@/src/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/src/components/ui/select';
-import { Label } from '@/src/components/ui/label';
+import { Mail, MapPin, Phone, Clock, Linkedin, Youtube, MessageCircle, Send, Building2, User } from 'lucide-react';
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    enquiryType: 'Third-Party Manufacturing',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSelectChange = (value: string) => {
-    setFormData({ ...formData, enquiryType: value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    try {
-      const { error } = await supabase
-        .from('leads')
-        .insert([
-          {
-            first_name: formData.firstName,
-            last_name: formData.lastName,
-            email: formData.email,
-            enquiry_type: formData.enquiryType,
-            message: formData.message,
-            status: 'new'
-          }
-        ]);
-
-      if (error) throw error;
-
-      setSubmitStatus('success');
-      setFormData({ firstName: '', lastName: '', email: '', enquiryType: 'Third-Party Manufacturing', message: '' });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const [activeTab, setActiveTab] = useState<'general' | 'b2b'>('general');
 
   return (
-    <div className="bg-background min-h-screen">
-      <div className="bg-primary py-20 text-primary-foreground">
-         <div className="max-w-7xl mx-auto px-4 text-center">
-             <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
-             <p className="text-primary-foreground/80">We'd love to hear from you. Reach out for manufacturing enquiries or general questions.</p>
-         </div>
+    <div className="bg-white min-h-screen">
+      
+      {/* Hero Section */}
+      <div className="relative bg-[#0d3b1f] py-24 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-20 bg-[url('/hero/contact-bg.jpg')] bg-cover bg-center"></div>
+        <div className="relative max-w-7xl mx-auto px-4 z-10 text-center">
+             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-sm font-medium mb-6 backdrop-blur-sm">
+               <MessageCircle className="w-4 h-4" />
+               <span>Get in Touch</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Contact Us</h1>
+            <p className="text-xl max-w-2xl mx-auto text-green-100/90 leading-relaxed">
+               Whether you represent a brand looking for manufacturing partners or are a patient seeking care, we are here to help.
+            </p>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-20">
-         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-             {/* Contact Info */}
-             <div>
-                 <h2 className="text-2xl font-bold text-primary mb-8">Get in Touch</h2>
-                 
-                 <div className="space-y-8 mb-12">
-                     <div className="flex items-start">
-                         <div className="bg-secondary p-3 rounded-lg mr-4">
-                             <MapPin className="w-6 h-6 text-primary" />
-                         </div>
-                         <div>
-                             <h4 className="font-bold text-foreground mb-1">Factory & Office</h4>
-                             <p className="text-muted-foreground">
-                                 Hanuma Ayur Care Pvt Ltd.<br/>
-                                 Plot No. 123, Industrial Area Phase II,<br/>
-                                 Kerala, India - 682001
-                             </p>
-                         </div>
-                     </div>
-                     
-                     <div className="flex items-start">
-                         <div className="bg-secondary p-3 rounded-lg mr-4">
-                             <Phone className="w-6 h-6 text-primary" />
-                         </div>
-                         <div>
-                             <h4 className="font-bold text-foreground mb-1">Phone</h4>
-                             <p className="text-muted-foreground">
-                                 +91 98765 43210 (B2B Enquiries)<br/>
-                                 +91 484 1234567 (Office)
-                             </p>
-                         </div>
-                     </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+              
+              {/* Contact Info & Map */}
+              <div>
+                  <h2 className="text-3xl font-bold text-green-950 mb-8">Reach Our HQ</h2>
+                  
+                  <div className="space-y-8 mb-12">
+                      <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center shrink-0 text-green-700">
+                              <MapPin className="w-6 h-6" />
+                          </div>
+                          <div>
+                              <h3 className="font-bold text-lg text-gray-900 mb-1">Head Office & Plant</h3>
+                              <p className="text-gray-600 leading-relaxed">
+                                  Hanuma Ayur Care,<br />
+                                  Industrial Area, Plot No. 45-B,<br />
+                                  Madhya Pradesh, India - 452001
+                              </p>
+                          </div>
+                      </div>
 
-                     <div className="flex items-start">
-                         <div className="bg-secondary p-3 rounded-lg mr-4">
-                             <Mail className="w-6 h-6 text-primary" />
-                         </div>
-                         <div>
-                             <h4 className="font-bold text-foreground mb-1">Email</h4>
-                             <p className="text-muted-foreground">
-                                 sales@hanumaayurcare.com<br/>
-                                 info@hanumaayurcare.com
-                             </p>
-                         </div>
-                     </div>
-                 </div>
+                      <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center shrink-0 text-green-700">
+                              <Phone className="w-6 h-6" />
+                          </div>
+                          <div>
+                              <h3 className="font-bold text-lg text-gray-900 mb-1">Phone</h3>
+                              <p className="text-gray-600 mb-1">+91 98765 43210 (General)</p>
+                              <p className="text-gray-600">+91 91234 56789 (B2B Sales)</p>
+                          </div>
+                      </div>
 
-                 {/* Map Placeholder */}
-                 <div className="w-full h-64 bg-muted rounded-xl overflow-hidden shadow-inner flex items-center justify-center text-muted-foreground">
-                     <span className="flex items-center gap-2"><MapPin className="w-5 h-5"/> Google Map Integration</span>
-                 </div>
-             </div>
+                      <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center shrink-0 text-green-700">
+                              <Mail className="w-6 h-6" />
+                          </div>
+                          <div>
+                              <h3 className="font-bold text-lg text-gray-900 mb-1">Email</h3>
+                              <p className="text-gray-600 mb-1">info@hanumaayurcare.com</p>
+                              <p className="text-gray-600">sales@hanumaayurcare.com</p>
+                          </div>
+                      </div>
 
-             {/* Enquiry Form */}
-             <div className="bg-card p-8 rounded-2xl shadow-lg border border-border">
-                 <h2 className="text-2xl font-bold text-primary mb-6">Send an Enquiry</h2>
-                 {submitStatus === 'success' ? (
-                    <div className="bg-secondary border border-primary/20 text-primary px-4 py-3 rounded relative" role="alert">
-                      <strong className="font-bold">Success!</strong>
-                      <span className="block sm:inline"> Your enquiry has been sent. We will get back to you shortly.</span>
-                      <Button variant="link" onClick={() => setSubmitStatus('idle')} className="mt-2 p-0 h-auto">Send another</Button>
-                    </div>
-                 ) : (
-                   <form onSubmit={handleSubmit} className="space-y-6">
-                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                           <div className="space-y-2">
-                               <Label htmlFor="firstName">First Name</Label>
-                               <Input 
-                                 id="firstName"
-                                 name="firstName"
-                                 value={formData.firstName}
-                                 onChange={handleChange}
-                                 required
-                                 placeholder="John" 
-                               />
-                           </div>
-                           <div className="space-y-2">
-                               <Label htmlFor="lastName">Last Name</Label>
-                               <Input 
-                                 id="lastName"
-                                 name="lastName"
-                                 value={formData.lastName}
-                                 onChange={handleChange}
-                                 required
-                                 placeholder="Doe" 
-                               />
-                           </div>
-                       </div>
+                      <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center shrink-0 text-green-700">
+                              <Clock className="w-6 h-6" />
+                          </div>
+                          <div>
+                              <h3 className="font-bold text-lg text-gray-900 mb-1">Business Hours</h3>
+                              <p className="text-gray-600">Mon - Sat: 9:00 AM - 6:00 PM</p>
+                          </div>
+                      </div>
+                  </div>
 
-                       <div className="space-y-2">
-                           <Label htmlFor="email">Email Address</Label>
-                           <Input 
-                             id="email"
-                             type="email" 
-                             name="email"
-                             value={formData.email}
-                             onChange={handleChange}
-                             required
-                             placeholder="john@company.com" 
-                           />
-                       </div>
-                       
-                       <div className="space-y-2">
-                           <Label htmlFor="enquiryType">Enquiry Type</Label>
-                           <Select onValueChange={handleSelectChange} defaultValue={formData.enquiryType}>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select Enquiry Type" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="Third-Party Manufacturing">Third-Party Manufacturing</SelectItem>
-                                <SelectItem value="Private Label">Private Label</SelectItem>
-                                <SelectItem value="Export / OEM">Export / OEM</SelectItem>
-                                <SelectItem value="General Enquiry">General Enquiry</SelectItem>
-                              </SelectContent>
-                           </Select>
-                       </div>
+                  {/* Social Links */}
+                  <div className="mb-12">
+                      <h3 className="font-bold text-lg text-gray-900 mb-4">Connect With Us</h3>
+                      <div className="flex gap-4">
+                          <a href="#" className="w-12 h-12 bg-blue-50 text-blue-700 rounded-full flex items-center justify-center hover:bg-blue-100 transition-colors">
+                              <Linkedin className="w-6 h-6" />
+                          </a>
+                          <a href="#" className="w-12 h-12 bg-red-50 text-red-600 rounded-full flex items-center justify-center hover:bg-red-100 transition-colors">
+                              <Youtube className="w-6 h-6" />
+                          </a>
+                          <a href="#" className="w-12 h-12 bg-green-50 text-green-600 rounded-full flex items-center justify-center hover:bg-green-100 transition-colors">
+                              <MessageCircle className="w-6 h-6" />
+                          </a>
+                      </div>
+                  </div>
 
-                       <div className="space-y-2">
-                           <Label htmlFor="message">Message</Label>
-                           <Textarea 
-                             id="message"
-                             name="message"
-                             value={formData.message}
-                             onChange={handleChange}
-                             required
-                             placeholder="Tell us about your requirements..."
-                             className="h-32"
-                           />
-                       </div>
+                  {/* CTAs */}
+                  <div className="flex flex-col sm:flex-row gap-4">
+                      <button className="flex-1 bg-green-900 text-white font-bold py-4 rounded-xl hover:bg-green-800 transition-colors shadow-lg">
+                          Schedule Plant Visit
+                      </button>
+                      <button className="flex-1 bg-white border border-green-900 text-green-900 font-bold py-4 rounded-xl hover:bg-green-50 transition-colors">
+                          Join Partner Network
+                      </button>
+                  </div>
+              </div>
 
-                       {submitStatus === 'error' && (
-                          <div className="text-destructive text-sm">Something went wrong. Please try again.</div>
-                       )}
+              {/* Enquiry Form */}
+              <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-xl">
+                  <div className="flex mb-8 bg-gray-100 p-1 rounded-xl">
+                      <button 
+                          onClick={() => setActiveTab('general')}
+                          className={`flex-1 py-3 text-sm font-bold rounded-lg transition-all ${activeTab === 'general' ? 'bg-white shadow text-green-900' : 'text-gray-500 hover:text-green-700'}`}
+                      >
+                          General Enquiry
+                      </button>
+                      <button 
+                          onClick={() => setActiveTab('b2b')}
+                          className={`flex-1 py-3 text-sm font-bold rounded-lg transition-all ${activeTab === 'b2b' ? 'bg-white shadow text-green-900' : 'text-gray-500 hover:text-green-700'}`}
+                      >
+                          B2B / Manufacturing
+                      </button>
+                  </div>
 
-                       <Button 
-                         type="submit" 
-                         disabled={isSubmitting}
-                         className="w-full h-12 text-lg"
-                       >
-                           {isSubmitting ? <Loader2 className="animate-spin w-5 h-5 mr-2" /> : null}
-                           {isSubmitting ? 'Sending...' : 'Send Message'}
-                       </Button>
-                   </form>
-                 )}
-             </div>
-         </div>
+                  {activeTab === 'general' ? (
+                      <form className="space-y-6">
+                          <div className="grid grid-cols-2 gap-4">
+                              <div>
+                                  <label className="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
+                                  <input type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-green-500 focus:ring-0 transition-colors" placeholder="John" />
+                              </div>
+                              <div>
+                                  <label className="block text-sm font-semibold text-gray-700 mb-2">Last Name</label>
+                                  <input type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-green-500 focus:ring-0 transition-colors" placeholder="Doe" />
+                              </div>
+                          </div>
+                          <div>
+                              <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                              <input type="email" className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-green-500 focus:ring-0 transition-colors" placeholder="john@example.com" />
+                          </div>
+                          <div>
+                              <label className="block text-sm font-semibold text-gray-700 mb-2">Message</label>
+                              <textarea rows={4} className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-green-500 focus:ring-0 transition-colors" placeholder="How can we help you?"></textarea>
+                          </div>
+                          <button type="button" className="w-full bg-[#f2d29b] text-green-950 font-bold py-4 rounded-xl hover:bg-[#e6c18a] transition-colors flex items-center justify-center gap-2">
+                              Send Message <Send className="w-4 h-4" />
+                          </button>
+                      </form>
+                  ) : (
+                      <form className="space-y-6">
+                           <div>
+                              <label className="block text-sm font-semibold text-gray-700 mb-2">Company Name</label>
+                              <div className="relative">
+                                  <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                                  <input type="text" className="w-full pl-12 pr-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-green-500 focus:ring-0 transition-colors" placeholder="Your Company" />
+                              </div>
+                          </div>
+                          <div className="grid grid-cols-2 gap-4">
+                              <div>
+                                  <label className="block text-sm font-semibold text-gray-700 mb-2">Contact Person</label>
+                                  <input type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-green-500 focus:ring-0 transition-colors" placeholder="Name" />
+                              </div>
+                              <div>
+                                  <label className="block text-sm font-semibold text-gray-700 mb-2">Designation</label>
+                                  <input type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-green-500 focus:ring-0 transition-colors" placeholder="Job Title" />
+                              </div>
+                          </div>
+                          <div className="grid grid-cols-2 gap-4">
+                              <div>
+                                  <label className="block text-sm font-semibold text-gray-700 mb-2">Interested Services</label>
+                                  <select className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-green-500 focus:ring-0 transition-colors">
+                                      <option>Private Label</option>
+                                      <option>Third Party Mfg</option>
+                                      <option>Raw Materials</option>
+                                  </select>
+                              </div>
+                              <div>
+                                  <label className="block text-sm font-semibold text-gray-700 mb-2">Est. Quantity</label>
+                                  <select className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-green-500 focus:ring-0 transition-colors">
+                                      <option>&lt; 1,000 Units</option>
+                                      <option>1,000 - 5,000</option>
+                                      <option>5,000 - 10,000</option>
+                                      <option>10,000+</option>
+                                  </select>
+                              </div>
+                          </div>
+                          <div>
+                              <label className="block text-sm font-semibold text-gray-700 mb-2">Project Details</label>
+                              <textarea rows={3} className="w-full px-4 py-3 rounded-lg bg-gray-50 border-transparent focus:bg-white focus:border-green-500 focus:ring-0 transition-colors" placeholder="Tell us about your requirements (Dosage form, target market, etc.)"></textarea>
+                          </div>
+                          <button type="button" className="w-full bg-green-900 text-white font-bold py-4 rounded-xl hover:bg-green-800 transition-colors flex items-center justify-center gap-2">
+                              Request Quotation <Send className="w-4 h-4" />
+                          </button>
+                      </form>
+                  )}
+              </div>
+          </div>
+          
+          {/* Map Section */}
+          <div className="mt-20 rounded-3xl overflow-hidden h-96 bg-gray-200 border border-gray-100 grayscale hover:grayscale-0 transition-all duration-500">
+               {/* Embed Google Map here. Using placeholder image for now */}
+               <div className="w-full h-full bg-[url('/hero/map-placeholder.jpg')] bg-cover bg-center flex items-center justify-center">
+                   <div className="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full text-green-900 font-bold shadow-lg">
+                       Google Map Integration
+                   </div>
+               </div>
+          </div>
+
       </div>
     </div>
   );
 }
-
