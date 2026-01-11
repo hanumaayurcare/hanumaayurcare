@@ -124,7 +124,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                         <CardFooter className="p-5 pt-0">
                             <Button asChild className="w-full bg-white text-[#1a3c2f] border border-[#1a3c2f] hover:bg-[#1a3c2f] hover:text-white transition-all h-10 text-sm font-medium tracking-wide">
                                 <a href={product.purchase_link || `https://pharmacy.hanumaayurcare.com/product/${product.slug}`} target="_blank" rel="noopener noreferrer">
-                                   {product.purchase_link ? 'Buy Now' : 'View Details'}
+                                   Buy Now
                                 </a>
                             </Button>
                         </CardFooter>
