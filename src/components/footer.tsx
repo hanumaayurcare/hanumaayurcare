@@ -1,164 +1,80 @@
-'use client';
-import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+
 import Link from 'next/link';
+import { Mail, Phone, MapPin, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const socialLinks = [
-    { icon: <FaFacebookF />, href: "https://facebook.com", label: "Facebook" },
-    { icon: <FaInstagram />, href: "https://instagram.com", label: "Instagram" },
-    { icon: <FaTwitter />, href: "https://twitter.com", label: "Twitter" },
-    { icon: <FaLinkedinIn />, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: <FaYoutube />, href: "https://youtube.com", label: "YouTube" },
-  ];
-
-  const quickLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About Us" },
-    { href: "/products", label: "Products" },
-    { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contact" },
-  ];
-
-  const legalLinks = [
-    { href: "/privacy", label: "Privacy Policy" },
-    { href: "/terms", label: "Terms of Service" },
-    { href: "/shipping", label: "Shipping Policy" },
-    { href: "/refunds", label: "Refund Policy" },
-  ];
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-[#1a3c2f] text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Columns Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-12">
-          {/* About Us Section */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold tracking-tight">About Us</h3>
-            <p className="text-gray-400 leading-relaxed">
-              We are dedicated to bringing you high-quality, natural Ayurvedic products for overall wellness and holistic health.
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          {/* Brand Column */}
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold text-[#f2d29b]">Hanuma Ayur Care</h2>
+            <p className="text-green-100/70 text-sm leading-relaxed">
+              Authentic Ayurveda meets modern science. We are dedicated to bringing you high-quality, GMP-certified natural products for holistic wellness.
             </p>
+            <div className="flex gap-4">
+               <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-[#f2d29b] hover:text-[#1a3c2f] transition-colors"><Facebook size={18} /></a>
+               <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-[#f2d29b] hover:text-[#1a3c2f] transition-colors"><Instagram size={18} /></a>
+               <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-[#f2d29b] hover:text-[#1a3c2f] transition-colors"><Twitter size={18} /></a>
+               <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-[#f2d29b] hover:text-[#1a3c2f] transition-colors"><Linkedin size={18} /></a>
+            </div>
           </div>
 
-          {/* Quick Links Section */}
+          {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold tracking-tight mb-4">Quick Links</h3>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link 
-                    href={link.href} 
-                    className="text-gray-400 hover:text-amber-400 transition-colors duration-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h3 className="text-lg font-bold mb-6 text-[#f2d29b]">Quick Links</h3>
+            <ul className="space-y-3 text-sm text-green-100/70">
+              <li><Link href="/" className="hover:text-white hover:translate-x-1 transition-all inline-block">Home</Link></li>
+              <li><Link href="/about" className="hover:text-white hover:translate-x-1 transition-all inline-block">About Us</Link></li>
+              <li><Link href="/products" className="hover:text-white hover:translate-x-1 transition-all inline-block">Products</Link></li>
+              <li><Link href="/manufacturing" className="hover:text-white hover:translate-x-1 transition-all inline-block">Manufacturing</Link></li>
+              <li><Link href="/services" className="hover:text-white hover:translate-x-1 transition-all inline-block">Services (B2B)</Link></li>
+              <li><Link href="/rnd" className="hover:text-white hover:translate-x-1 transition-all inline-block">R&D</Link></li>
             </ul>
           </div>
 
-          {/* Contact Section */}
+          {/* Resources */}
           <div>
-            <h3 className="text-xl font-bold tracking-tight mb-4">Contact Us</h3>
-            <address className="not-italic space-y-3">
-              <p className="text-gray-400">
-                <span className="block font-medium text-gray-300">Email:</span>
-                <a href="mailto:support@yourstore.com" className="hover:text-amber-400 transition-colors duration-200">
-                  support@yourstore.com
-                </a>
-              </p>
-              <p className="text-gray-400">
-                <span className="block font-medium text-gray-300">Phone:</span>
-                <a href="tel:+11234567890" className="hover:text-amber-400 transition-colors duration-200">
-                  +1 (123) 456-7890
-                </a>
-              </p>
-              <p className="text-gray-400">
-                <span className="block font-medium text-gray-300">Address:</span>
-                123 Wellness Street, Ayurveda City, AC 12345
-              </p>
-            </address>
+            <h3 className="text-lg font-bold mb-6 text-[#f2d29b]">Resources</h3>
+            <ul className="space-y-3 text-sm text-green-100/70">
+              <li><Link href="/knowledge" className="hover:text-white hover:translate-x-1 transition-all inline-block">Knowledge Center</Link></li>
+              <li><Link href="/certifications" className="hover:text-white hover:translate-x-1 transition-all inline-block">Certifications</Link></li>
+              <li><a href="https://hospital.hanumaayurcare.com" target="_blank" rel="noreferrer" className="hover:text-white hover:translate-x-1 transition-all inline-block flex items-center gap-1">Hospital <span className="text-[10px]">↗</span></a></li>
+              <li><a href="https://pharmacy.hanumaayurcare.com" target="_blank" rel="noreferrer" className="hover:text-white hover:translate-x-1 transition-all inline-block flex items-center gap-1">Pharmacy Store <span className="text-[10px]">↗</span></a></li>
+              <li><Link href="/contact" className="hover:text-white hover:translate-x-1 transition-all inline-block">Contact Us</Link></li>
+            </ul>
           </div>
 
-          {/* Social Media Section */}
+          {/* Contact Info */}
           <div>
-            <h3 className="text-xl font-bold tracking-tight mb-4">Follow Us</h3>
-            <div className="flex flex-wrap gap-4 mb-6">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Follow us on ${social.label}`}
-                  className="text-gray-400 hover:text-amber-400 text-2xl transition-colors duration-200"
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
-            <div>
-              <h4 className="font-medium text-gray-300 mb-3">Payment Methods</h4>
-              <div className="flex gap-2">
-                {['Visa', 'Mastercard', 'PayPal', 'ApplePay'].map((method) => (
-                  <div 
-                    key={method}
-                    className="bg-gray-800 px-3 py-1 rounded text-xs font-medium text-gray-300"
-                  >
-                    {method}
-                  </div>
-                ))}
-              </div>
-            </div>
+            <h3 className="text-lg font-bold mb-6 text-[#f2d29b]">Contact Us</h3>
+            <ul className="space-y-4 text-sm text-green-100/70">
+              <li className="flex items-start gap-3">
+                 <MapPin className="w-5 h-5 flex-shrink-0 text-[#f2d29b]" />
+                 <span>Hanuma Ayur Care Pvt Ltd,<br/>Plot 123, Industrial Area,<br/>Kerala - 682001</span>
+              </li>
+              <li className="flex items-center gap-3">
+                 <Phone className="w-5 h-5 flex-shrink-0 text-[#f2d29b]" />
+                 <span>+91 98765 43210</span>
+              </li>
+              <li className="flex items-center gap-3">
+                 <Mail className="w-5 h-5 flex-shrink-0 text-[#f2d29b]" />
+                 <span>info@hanumaayurcare.com</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Newsletter Section - Separate Row */}
-        <div className="border-t border-b border-gray-800 py-8">
-          <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-2xl font-bold mb-4">Subscribe to Our Newsletter</h3>
-            <p className="text-gray-400 mb-6">
-              Get the latest updates on our products, wellness tips, and exclusive offers.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-3 justify-center">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
-                className="px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 flex-grow max-w-md"
-                aria-label="Email for newsletter subscription"
-                required
-              />
-              <button 
-                type="submit" 
-                className="px-6 py-3 bg-amber-600 hover:bg-amber-700 rounded-lg font-medium transition-colors duration-200 whitespace-nowrap"
-              >
-                Subscribe Now
-              </button>
-            </form>
-          </div>
-        </div>
-
-        {/* Bottom Section */}
-        <div className="py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-400 text-center md:text-left">
-              &copy; {currentYear} Ayurveda Wellness. All Rights Reserved.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              {legalLinks.map((link) => (
-                <Link 
-                  key={link.href}
-                  href={link.href} 
-                  className="text-sm text-gray-400 hover:text-amber-400 transition-colors duration-200"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="mt-4 text-center text-xs text-gray-500">
-            <p>Disclaimer: These statements have not been evaluated by the FDA. Our products are not intended to diagnose, treat, cure, or prevent any disease.</p>
-          </div>
+        <div className="border-t border-green-800/50 pt-8 mt-8 text-center text-xs text-green-100/50 flex flex-col md:flex-row justify-between items-center gap-4">
+           <p>&copy; {currentYear} Hanuma Ayur Care Pvt Ltd. All rights reserved.</p>
+           <div className="flex gap-6">
+              <a href="#" className="hover:text-white">Privacy Policy</a>
+              <a href="#" className="hover:text-white">Terms of Service</a>
+              <Link href="/admin" className="hover:text-white opacity-50">Admin</Link>
+           </div>
         </div>
       </div>
     </footer>

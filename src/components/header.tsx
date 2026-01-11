@@ -4,10 +4,12 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { Menu, X, ShoppingCart, User, Search, ExternalLink } from 'lucide-react';
 
 interface NavItem {
   label: string;
   href: string;
+  external?: boolean;
   dropdown?: { label: string; href: string }[];
 }
 
@@ -16,44 +18,33 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const pathname = usePathname();
 
-  // Navigation items structure
+  // Navigation items structure based on new sitemap
   const navItems: NavItem[] = [
     { label: 'Home', href: '/' },
     { 
-      label: 'Products', 
-      href: '/products',
+      label: 'About', 
+      href: '/about',
       dropdown: [
-        { label: 'Health Supplements', href: '/products/health-supplements' },
-        { label: 'Personal Care', href: '/products/personal-care' },
-        { label: 'Digestive Health', href: '/products/digestive-health' },
-        { label: 'Immunity Products', href: '/products/immunity-boosters' },
-        { label: 'Specialized Formulations', href: '/products/specialized-formulations' },
-        { label: 'View All Products', href: '/products' },
+        { label: 'Company Story', href: '/about/company-story' },
+        { label: 'Heritage', href: '/about/heritage' },
+        { label: 'Facilities', href: '/about/facilities' },
+        { label: 'Team', href: '/about/team' },
+        { label: 'Standards', href: '/about/standards' },
       ]
     },
+    { label: 'Products', href: '/products' },
+    { label: 'Manufacturing', href: '/manufacturing' },
+    { label: 'Services', href: '/services' },
+    { label: 'R&D', href: '/rnd' },
     { 
-      label: 'About Us', 
-      href: '/about-us',
+      label: 'Knowledge', 
+      href: '/knowledge',
       dropdown: [
-        { label: 'Our Story', href: '/about-us/company-story' },
-        { label: 'Ayurvedic Heritage', href: '/about-us/heritage' },
-        { label: 'Manufacturing Excellence', href: '/about-us/facilities' },
-        { label: 'Leadership Team', href: '/about-us/team' },
-        { label: 'Quality Standards', href: '/about-us/standards' },
+        { label: 'Blog', href: '/knowledge' },
+        { label: 'Certifications', href: '/certifications' },
       ]
     },
-    { 
-      label: 'Ayurveda', 
-      href: '/ayurveda',
-      dropdown: [
-        { label: 'Ayurvedic Principles', href: '/ayurveda/principles' },
-        { label: 'Herb Directory', href: '/ayurveda/herbs' },
-        { label: 'Health Conditions', href: '/ayurveda/health' },
-      ]
-    },
-    { label: 'Research', href: '/research' },
-    { label: 'Where to Buy', href: '/store-locator' },
-    { label: 'Contact Us', href: '/contact' },
+    { label: 'Contact', href: '/contact' },
   ];
 
   // Handle scroll effect for sticky navbar
@@ -66,7 +57,7 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when route changes (App Router version)
+  // Close mobile menu when route changes
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
@@ -78,13 +69,13 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'shadow-md bg-white' : 'bg-white bg-opacity-95'}`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'shadow-md bg-white/95 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-md'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 md:h-20">
+        <div className="flex justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="flex items-center">
-              <div className="h-10 w-10 mr-3 relative">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="h-10 w-10 relative transition-transform group-hover:scale-105">
                 <Image 
                   src="/placeholder-logo.png" 
                   alt="HAC Logo"
@@ -94,78 +85,44 @@ const Navbar: React.FC = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <h1 className="text-primary-600 font-bold text-lg md:text-xl">HANUMA AYUR CARE</h1>
-                <span className="text-accent-600 text-xs tracking-wider hidden sm:block">ANCIENT WISDOM, MODERN WELLNESS</span>
+                <h1 className="text-primary-800 font-bold text-lg leading-tight tracking-tight">HANUMA AYUR CARE</h1>
+                <span className="text-amber-600 text-[0.65rem] tracking-[0.2em] font-medium">ANCIENT WISDOM, MODERN SCIENCE</span>
               </div>
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="flex items-center md:hidden">
-            <button 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-dark-600 hover:text-primary-600 focus:outline-none"
-              aria-expanded="false"
-            >
-              <span className="sr-only">Open main menu</span>
-              <div className="relative w-6 h-6">
-                <span 
-                  className={`absolute h-0.5 w-6 bg-current transform transition duration-300 ease-in-out ${isMenuOpen ? 'rotate-45 translate-y-0' : '-translate-y-2'}`} 
-                />
-                <span 
-                  className={`absolute h-0.5 w-6 bg-current transform transition duration-300 ease-in-out ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`} 
-                />
-                <span 
-                  className={`absolute h-0.5 w-6 bg-current transform transition duration-300 ease-in-out ${isMenuOpen ? '-rotate-45 translate-y-0' : 'translate-y-2'}`} 
-                />
-              </div>
-            </button>
-          </div>
-
           {/* Desktop menu */}
-          <div className="hidden md:flex md:items-center md:space-x-1 lg:space-x-4">
-            <div className="hidden md:flex md:items-center">
+          <div className="hidden lg:flex lg:items-center">
+            <div className="flex items-center space-x-1">
               {navItems.map((item, index) => (
-                <div key={index} className="relative group">
+                <div key={index} className="relative group/nav">
                   <Link 
                     href={item.href}
-                    className={`px-3 py-4 text-sm lg:text-base font-medium border-b-2 ${isActive(item.href) ? 'text-primary-600 border-primary-600' : 'text-dark-600 border-transparent hover:text-primary-600'} ${item.label === 'Contact Us' ? 'ml-2 bg-primary-600 hover:bg-accent-600 text-white px-4 py-2 rounded-md border-none' : ''}`}
+                    className={`px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-md flex items-center gap-1
+                      ${isActive(item.href) 
+                        ? 'text-primary-700 bg-primary-50' 
+                        : 'text-gray-600 hover:text-primary-700 hover:bg-gray-50'
+                      }`}
                   >
                     {item.label}
                     {item.dropdown && (
-                      <span className="ml-1 inline-block">
-                        <svg 
-                          xmlns="http://www.w3.org/2000/svg" 
-                          width="12" 
-                          height="12" 
-                          viewBox="0 0 24 24" 
-                          fill="none" 
-                          stroke="currentColor" 
-                          strokeWidth="2" 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round"
-                        >
-                          <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                      </span>
+                      <svg className="w-3 h-3 opacity-50 block duration-200 group-hover/nav:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     )}
                   </Link>
                   
                   {/* Dropdown menu */}
                   {item.dropdown && (
-                    <div className="absolute left-0 mt-0 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                      <div className="pt-2">
-                        <div className="bg-white border-t-2 border-primary-600 rounded-md shadow-lg py-1">
-                          {item.dropdown.map((dropdownItem, dropdownIndex) => (
-                            <Link 
-                              key={dropdownIndex}
-                              href={dropdownItem.href}
-                              className="block px-4 py-2 text-sm text-dark-600 hover:bg-light-100 hover:text-primary-600"
-                            >
-                              {dropdownItem.label}
-                            </Link>
-                          ))}
-                        </div>
+                    <div className="absolute left-0 mt-0 w-56 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200 z-50 pt-2">
+                       <div className="bg-white rounded-lg shadow-xl ring-1 ring-black ring-opacity-5 overflow-hidden">
+                        {item.dropdown.map((dropdownItem, dropdownIndex) => (
+                          <Link 
+                            key={dropdownIndex}
+                            href={dropdownItem.href}
+                            className="block px-4 py-3 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 border-l-2 border-transparent hover:border-primary-500 transition-all"
+                          >
+                            {dropdownItem.label}
+                          </Link>
+                        ))}
                       </div>
                     </div>
                   )}
@@ -174,72 +131,90 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
-          {/* Right side items */}
-          <div className="hidden md:flex md:items-center">
-            <Link href="/search" className="px-3 py-2 text-dark-600 hover:text-primary-600">
-              <span className="sr-only">Search</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </Link>
-            <Link href="/account" className="px-3 py-2 text-dark-600 hover:text-primary-600">
-              <span className="sr-only">Account</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-            </Link>
-            <Link href="/cart" className="pl-3 pr-1 py-2 text-dark-600 hover:text-primary-600">
-              <span className="sr-only">Cart</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            </Link>
+          {/* Right side items (External Actions) */}
+          <div className="hidden lg:flex lg:items-center gap-3 pl-4">
+             {/* Hospital Link */}
+             <a 
+              href="https://hospital.hanumaayurcare.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary-700 bg-white border border-primary-200 rounded-full hover:bg-primary-50 hover:border-primary-300 transition-colors"
+            >
+              <span>Hospital</span>
+              <ExternalLink className="w-3 h-3 opacity-50" />
+            </a>
+
+            {/* Shop Link */}
+            <a 
+              href="https://pharmacy.hanumaayurcare.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2 text-sm font-bold text-white bg-primary-700 rounded-full hover:bg-primary-800 shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
+            >
+              <ShoppingCart className="w-4 h-4" />
+              <span>Shop Now</span>
+            </a>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="flex items-center lg:hidden">
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-md text-gray-600 hover:text-primary-600 focus:outline-none"
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
-          {navItems.map((item, index) => (
-            <div key={index}>
-              <Link 
-                href={item.href}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${isActive(item.href) ? 'text-primary-600 bg-light-100' : 'text-dark-600 hover:bg-light-100 hover:text-primary-600'} ${item.label === 'Contact Us' ? 'bg-primary-600 text-white hover:bg-accent-600' : ''}`}
-              >
-                {item.label}
-              </Link>
-              
-              {/* Mobile dropdown */}
-              {item.dropdown && (
-                <div className="pl-4 mt-1 space-y-1">
-                  {item.dropdown.map((dropdownItem, dropdownIndex) => (
-                    <Link
-                      key={dropdownIndex}
-                      href={dropdownItem.href}
-                      className="block px-3 py-2 rounded-md text-sm font-medium text-dark-600 hover:bg-light-100 hover:text-primary-600"
-                    >
-                      {dropdownItem.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+      <div className={`lg:hidden bg-white border-t border-gray-100 absolute w-full transition-all duration-300 ease-in-out shadow-xl ${isMenuOpen ? 'max-h-[80vh] opacity-100 overflow-y-auto' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+        <div className="px-4 py-6 space-y-4">
+          <div className="flex flex-col space-y-2">
+            {navItems.map((item, index) => (
+              <div key={index}>
+                <Link 
+                  href={item.href}
+                  className={`block px-4 py-3 rounded-lg text-base font-medium ${isActive(item.href) ? 'text-primary-700 bg-primary-50' : 'text-gray-700 hover:bg-gray-50'}`}
+                >
+                  {item.label}
+                </Link>
+                {item.dropdown && (
+                  <div className="pl-8 mt-1 space-y-1 border-l-2 border-gray-100 ml-4">
+                    {item.dropdown.map((dropdownItem, dropdownIndex) => (
+                      <Link
+                        key={dropdownIndex}
+                        href={dropdownItem.href}
+                        className="block px-4 py-2 rounded-md text-sm text-gray-600 hover:text-primary-700"
+                      >
+                        {dropdownItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
           
-          {/* Mobile secondary menu */}
-          <div className="pt-4 pb-3 border-t border-gray-200">
-            <div className="flex items-center px-3">
-              <Link href="/search" className="px-3 py-2 text-dark-600 hover:text-primary-600">
-                <span>Search</span>
-              </Link>
-              <Link href="/account" className="px-3 py-2 text-dark-600 hover:text-primary-600">
-                <span>Account</span>
-              </Link>
-              <Link href="/cart" className="px-3 py-2 text-dark-600 hover:text-primary-600">
-                <span>Cart</span>
-              </Link>
-            </div>
+          <div className="pt-6 border-t border-gray-100 flex flex-col gap-3">
+             <a 
+              href="https://hospital.hanumaayurcare.com" 
+              target="_blank"
+              rel="noopener noreferrer" 
+              className="w-full text-center py-3 rounded-lg border border-primary-200 text-primary-700 font-medium hover:bg-primary-50"
+            >
+              Visit Hospital
+            </a>
+            <a 
+              href="https://pharmacy.hanumaayurcare.com"
+              target="_blank"
+              rel="noopener noreferrer" 
+              className="w-full text-center py-3 rounded-lg bg-primary-700 text-white font-bold hover:bg-primary-800 flex justify-center items-center gap-2"
+            >
+              <ShoppingCart className="w-4 h-4" />
+              Shop Online
+            </a>
           </div>
         </div>
       </div>

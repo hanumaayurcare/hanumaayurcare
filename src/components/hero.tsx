@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { Button } from '@/src/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
-const AyurvedicEnhancedHero = () => {
+const AyurvedicHeroBanner = () => {
   return (
     <div className="relative w-full overflow-hidden bg-[#f3f6f3]">
       {/* Background leaf pattern overlay */}
@@ -14,110 +16,88 @@ const AyurvedicEnhancedHero = () => {
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10 py-4">
+      <div className="max-w-7xl mx-auto px-4 relative z-10 py-12 md:py-20 lg:py-28">
         {/* Decorative line with icon */}
-        <div className="flex items-center mb-6 md:mb-10">
-          <div className="h-px bg-green-700 flex-grow opacity-20"></div>
+        <div className="flex items-center mb-6 md:mb-10 justify-center lg:justify-start">
+          <div className="h-px bg-green-700 w-12 opacity-30"></div>
           <div className="mx-4 text-green-600">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
+             <span className="font-semibold tracking-[0.2em] text-sm uppercase">Ayurvedic Manufacturing & Wellness</span>
           </div>
-          <div className="h-px bg-green-700 flex-grow opacity-20"></div>
+          <div className="h-px bg-green-700 w-12 opacity-30"></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Left Text Content */}
-          <div>
-            <h2 className="text-green-700 text-lg md:text-xl font-medium mb-3">Trusted for Generations</h2>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-green-900 mb-6 leading-tight">
-              Harmonizing <span className="text-[#6b4f29]">Nature's Wisdom</span> With Modern Science
+          <div className="text-center lg:text-left">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-green-950 mb-6 leading-tight">
+              Authenticity Meets <span className="text-[#c58f51] block mt-2">Modern GMP</span>
             </h1>
-            <p className="text-lg md:text-xl text-green-700 mb-8 max-w-2xl">
-              Discover the authentic Ayurvedic experience — crafted with care from nature’s finest ingredients and backed by centuries of traditional knowledge.
+            <p className="text-lg md:text-xl text-green-800/80 mb-8 max-w-2xl mx-auto lg:mx-0">
+               Empowering brands with high-quality Ayurvedic manufacturing, blending ancient wisdom with industry 4.0 standards.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <Link href="/about">
-                <span className="group inline-flex items-center justify-center bg-[#3f6b4c] hover:bg-[#345b3f] text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
-                  Our Heritage
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </span>
-              </Link>
-              <Link href="/products">
-                <span className="inline-flex items-center justify-center border-2 border-[#3f6b4c] hover:bg-[#e8f1ea] text-[#3f6b4c] font-medium py-3 px-8 rounded-lg transition-all duration-300">
-                  Explore Products
-                </span>
-              </Link>
+            <div className="flex flex-col sm:flex-row gap-4 mb-10 justify-center lg:justify-start">
+              <Button asChild size="lg" className="h-14 px-8 text-lg rounded-full shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all">
+                <Link href="/manufacturing">
+                  Enquire for Manufacturing
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full border-2 border-primary text-primary hover:bg-primary/5 hover:text-primary transition-all">
+                <a href="https://pharmacy.hanumaayurcare.com" target="_blank" rel="noopener noreferrer">
+                  Shop Products
+                </a>
+              </Button>
             </div>
 
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center gap-6 text-green-900">
-              <div className="flex items-center">
-                <div className="mr-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#c58f51]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <span className="font-medium">GMP Certified</span>
-              </div>
-              <div className="flex items-center">
-                <div className="mr-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#c58f51]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                  </svg>
-                </div>
-                <span className="font-medium">100% Natural</span>
-              </div>
-              <div className="flex items-center">
-                <div className="mr-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#c58f51]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <span className="font-medium">Since 1920</span>
-              </div>
+            {/* Quick Highlights / Trust Indicators */}
+            <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto lg:mx-0">
+               <div className="flex items-center gap-3 bg-white/50 p-3 rounded-lg border border-green-100">
+                  <div className="text-[#c58f51]">
+                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                  </div>
+                  <div className="text-left">
+                     <p className="text-xs text-green-600 font-semibold uppercase">Certified</p>
+                     <p className="text-sm font-bold text-green-900">GMP, AYUSH, ISO</p>
+                  </div>
+               </div>
+               <div className="flex items-center gap-3 bg-white/50 p-3 rounded-lg border border-green-100">
+                  <div className="text-[#c58f51]">
+                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  </div>
+                  <div className="text-left">
+                     <p className="text-xs text-green-600 font-semibold uppercase">Capacity</p>
+                     <p className="text-sm font-bold text-green-900">High Volume</p>
+                  </div>
+               </div>
+            </div>
+            
+            <div className="mt-8 flex flex-wrap gap-2 justify-center lg:justify-start text-xs font-dm font-medium text-green-700/60 uppercase tracking-wide">
+               <span className="bg-green-100/50 px-3 py-1 rounded-full">Tablets</span>
+               <span className="bg-green-100/50 px-3 py-1 rounded-full">Capsules</span>
+               <span className="bg-green-100/50 px-3 py-1 rounded-full">Syrups</span>
+               <span className="bg-green-100/50 px-3 py-1 rounded-full">Oils</span>
+               <span className="bg-green-100/50 px-3 py-1 rounded-full">Extracts</span>
             </div>
           </div>
 
           {/* Right Image Content */}
-          <div className="relative h-full">
-            <div className="relative h-64 md:h-80 lg:h-96 w-full rounded-lg overflow-hidden shadow-xl">
+          <div className="relative h-full hidden lg:block">
+            <div className="relative h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl shadow-green-900/20 md:rotate-3 transition-transform hover:rotate-0 duration-700">
               <Image
-                src="/hero/ayurveda-ingredients.webp"
-                alt="Authentic Ayurvedic Ingredients"
+                src="/hero/ayurveda-ingredients.webp" // Ensure this image exists or use a placehold
+                alt="Ayurvedic Manufacturing"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 style={{ objectFit: 'cover' }}
                 priority
               />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Highlight Section */}
-      <div className="bg-[#3f6b4c] text-white mt-8 py-6 px-4">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div className="p-3">
-              <div className="font-bold text-xl md:text-2xl text-[#f2d29b]">250+</div>
-              <div className="text-green-100">Herbal Products</div>
-            </div>
-            <div className="p-3">
-              <div className="font-bold text-xl md:text-2xl text-[#f2d29b]">50+</div>
-              <div className="text-green-100">Formulations</div>
-            </div>
-            <div className="p-3">
-              <div className="font-bold text-xl md:text-2xl text-[#f2d29b]">10M+</div>
-              <div className="text-green-100">Satisfied Customers</div>
-            </div>
-            <div className="p-3">
-              <div className="font-bold text-xl md:text-2xl text-[#f2d29b]">10+</div>
-              <div className="text-green-100">Countries Served</div>
+               <div className="absolute inset-0 bg-gradient-to-t from-green-950/60 to-transparent"></div>
+               <div className="absolute bottom-6 left-6 text-white text-left">
+                  <p className="font-bold text-xl">Legacy of Excellence</p>
+                  <p className="text-sm opacity-90">Combining tradition with technology.</p>
+               </div>
             </div>
           </div>
         </div>
@@ -126,4 +106,4 @@ const AyurvedicEnhancedHero = () => {
   );
 };
 
-export default AyurvedicEnhancedHero;
+export default AyurvedicHeroBanner;
