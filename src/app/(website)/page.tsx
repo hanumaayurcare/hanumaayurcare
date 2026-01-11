@@ -1,5 +1,6 @@
 import Image from "next/image";
 import AyurvedicHeroBanner from "@/src/components/hero";
+import Testimonials from '@/src/components/testimonials';
 import { Button } from '@/src/components/ui/button';
 
 
@@ -77,6 +78,53 @@ export default function Home() {
            </div>
         </div>
       </section>
+
+      {/* Infrastructure Snapshot */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+             <h2 className="text-3xl font-bold text-green-950 mb-4">World-Class Infrastructure</h2>
+             <p className="text-gray-600 max-w-2xl mx-auto">Our GMP-certified manufacturing units are equipped with state-of-the-art machinery to ensure precision and purity.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 h-96">
+              <div className="md:col-span-2 relative rounded-2xl overflow-hidden group">
+                  <div className="absolute inset-0 bg-gray-200 animate-pulse"></div> {/* Placeholder for Mfg Plant */}
+                  <div className="absolute inset-0 bg-black/40 flex items-end p-6 group-hover:bg-black/50 transition-colors">
+                      <span className="text-white font-bold text-lg">Manufacturing Unit</span>
+                  </div>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden group">
+                  <div className="absolute inset-0 bg-gray-300 animate-pulse"></div> {/* Placeholder for Lab */}
+                   <div className="absolute inset-0 bg-black/40 flex items-end p-6 group-hover:bg-black/50 transition-colors">
+                      <span className="text-white font-bold text-lg">QC Laboratory</span>
+                  </div>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden group">
+                  <div className="absolute inset-0 bg-gray-400 animate-pulse"></div> {/* Placeholder for Packaging */}
+                   <div className="absolute inset-0 bg-black/40 flex items-end p-6 group-hover:bg-black/50 transition-colors">
+                      <span className="text-white font-bold text-lg">Packaging Line</span>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Client Logos */}
+      <section className="py-16 bg-[#fcfdfc] border-y border-green-50">
+         <div className="max-w-7xl mx-auto px-4 text-center">
+             <p className="text-sm font-semibold text-green-600 uppercase tracking-widest mb-8">Trusted by Leading Brands</p>
+             <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                 {/* Placeholders for Logos */}
+                 {['Brand A', 'Brand B', 'Brand C', 'Brand D', 'Brand E'].map((brand, i) => (
+                    <div key={i} className="text-2xl font-bold text-gray-400 border border-gray-200 px-6 py-2 rounded-lg">{brand}</div>
+                 ))}
+             </div>
+         </div>
+      </section>
+
+
+      {/* Testimonials */}
+      <Testimonials />
 
 
     </div>

@@ -1,11 +1,10 @@
-
 import { supabase } from '@/src/lib/supabaseClient';
 import { getCategoryBySlug } from '@/src/lib/productCategories';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/src/components/ui/card';
 import { Button } from '@/src/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, ShoppingBag, Leaf } from 'lucide-react';
+import { ArrowLeft, ShoppingBag, Leaf, Star } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -18,6 +17,7 @@ interface Product {
   dosage_form: string;
   therapeutic_categories: string[];
   description: string;
+  benefits: string[];
   image_url: string | null;
   purchase_link: string | null;
 }
@@ -87,7 +87,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         )}
 
         {!products || products.length === 0 ? (
-            <div className="text-center py-20 bg-gray-50 rounded-xl border border-dashed border-gray-200">
+            <div className="text-center bg-gray-50 rounded-xl border border-dashed border-gray-200">
                 <p className="text-xl text-gray-500 mb-4">No products found in this category yet.</p>
                 <Button asChild variant="outline">
                     <Link href="/products">Browse all Categories</Link>
@@ -96,53 +96,34 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {products.map((product) => (
-                    <Card key={product.id} className="group flex flex-col h-full border-0 shadow-sm hover:shadow-xl transition-all duration-500 bg-white overflow-hidden rounded-xl">
-                        {/* Image Section - Clean & Immersive */}
-                        <div className="relative aspect-[4/3] bg-gray-50 overflow-hidden">
-                           {product.image_url ? (
-                               <Image 
-                                 src={product.image_url} 
-                                 alt={product.name}
-                                 fill
-                                 className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                               />
-                           ) : (
-                               <div className="w-full h-full flex items-center justify-center bg-green-50/30">
-                                   <Leaf className="w-12 h-12 text-green-100" />
-                               </div>
-                           )}
-                           {/* Badge - Floating & Minimal */}
-                           <div className="absolute top-3 left-3">
-                               <span className="bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold tracking-wider text-green-900 shadow-sm border border-green-100 uppercase">
+                    <Card key={product.id} className="group flex flex-col h-full bg-white border border-gray-100 border-t-4 border-t-[#1a3c2f] shadow-sm hover:shadow-md transition-all duration-300 rounded-lg">
+                        <CardHeader className="p-5 pb-2">
+                             <div className="flex justify-between items-start mb-3">
+                                <span className="bg-gray-50 text-gray-600 border border-gray-200 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">
                                    {product.dosage_form}
-                               </span>
-                           </div>
-                        </div>
-
-                        <CardHeader className="p-6 pb-2">
-                             {/* Primary Tag Only */}
-                             <div className="mb-2">
-                                {product.therapeutic_categories?.[0] && (
-                                    <span className="text-[10px] font-bold tracking-widest text-green-600 uppercase">
-                                        {product.therapeutic_categories[0]}
-                                    </span>
-                                )}
+                                </span>
                              </div>
-                            <CardTitle className="text-xl font-bold text-green-950 font-serif leading-tight group-hover:text-amber-600 transition-colors">
-                                {product.name}
-                            </CardTitle>
+                            
+                            <CardTitle className="text-xl font-bold text-gray-900 font-serif leading-tight group-hover:text-[#1a3c2f] transition-colors">{product.name}</CardTitle>
+                             
+                             <div className="flex flex-wrap gap-1 mt-3">
+                                {product.therapeutic_categories?.slice(0, 3).map((cat: string) => (
+                                    <span key={cat} className="text-[10px] uppercase font-medium text-green-700 bg-green-50 px-2 py-1 rounded">
+                                        {cat}
+                                    </span>
+                                ))}
+                             </div>
                         </CardHeader>
 
-                        <CardContent className="p-6 pt-2 flex-grow">
-                            <p className="text-sm text-gray-500 line-clamp-3 leading-relaxed font-light">
+                        <CardContent className="p-5 pt-2 flex-grow">
+                             <p className="text-sm text-gray-500 line-clamp-3 leading-relaxed">
                                 {product.description}
                             </p>
                         </CardContent>
 
-                        <CardFooter className="p-6 pt-0 mt-auto">
-                            <Button asChild className="w-full bg-[#1a3c2f] text-white hover:bg-[#2c5e4a] h-12 rounded-lg text-sm font-medium tracking-wide shadow-none hover:shadow-md transition-all">
+                        <CardFooter className="p-5 pt-0">
+                            <Button asChild className="w-full bg-white text-[#1a3c2f] border border-[#1a3c2f] hover:bg-[#1a3c2f] hover:text-white transition-all h-10 text-sm font-medium tracking-wide">
                                 <a href={product.purchase_link || `https://pharmacy.hanumaayurcare.com/product/${product.slug}`} target="_blank" rel="noopener noreferrer">
-                                   <ShoppingBag className="w-4 h-4 mr-2" /> 
                                    {product.purchase_link ? 'Buy Now' : 'View Details'}
                                 </a>
                             </Button>

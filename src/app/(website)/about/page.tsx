@@ -1,17 +1,15 @@
 import { Button } from '@/src/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/src/components/ui/card';
+import { Card, CardContent } from '@/src/components/ui/card';
 import { 
   History, 
-  Sparkles, 
   Building2, 
   Users2, 
-  ShieldCheck, 
   Leaf,
   Target,
-  Heart
+  Heart,
+  ArrowRight
 } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function AboutUs() {
   return (
@@ -28,14 +26,16 @@ export default function AboutUs() {
               <span>Authentic Ayurveda Since 1920</span>
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-green-950 mb-8 tracking-tight">
-              Our Journey of <span className="text-[#3f6b4c]">Wellbeing</span>
+              About Hanuma Ayur Care
             </h1>
             <p className="text-xl text-green-900/70 max-w-3xl mx-auto leading-relaxed mb-10">
-              Hanuman Ayurcare combines 5,000 years of Vedic tradition with modern scientific standards to bring you pure, effective, and authentic Ayurvedic solutions.
+              Hanuman Ayurcare combines 5,000 years of Vedic tradition with modern scientific standards. We are more than just manufacturers; we are custodians of a legacy.
             </p>
           </div>
         </div>
       </section>
+
+      {/* Vision & Mission - Overview */}
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -45,9 +45,12 @@ export default function AboutUs() {
                    <Target className="w-6 h-6 text-primary" />
                  </div>
                  <h3 className="text-2xl font-bold text-primary mb-4">Our Vision</h3>
-                 <p className="text-foreground/80 leading-relaxed">
-                   To be the global torchbearer of authentic Ayurveda, making holistic wellness accessible to every home while preserving the sanctity of ancient formulations.
+                 <p className="text-foreground/80 leading-relaxed mb-6">
+                   To be the global torchbearer of authentic Ayurveda, making holistic wellness accessible to every home while preserving the sanctity of ancient formulations through modern science.
                  </p>
+                 <Link href="/about/company-story" className="text-primary font-bold inline-flex items-center hover:underline">
+                    Read Our Story <ArrowRight className="w-4 h-4 ml-2"/>
+                 </Link>
                </CardContent>
             </Card>
             <Card className="bg-secondary/50 border-secondary">
@@ -56,8 +59,8 @@ export default function AboutUs() {
                    <Heart className="w-6 h-6 text-primary" />
                  </div>
                  <h3 className="text-2xl font-bold text-primary mb-4">Our Mission</h3>
-                 <p className="text-foreground/80 leading-relaxed">
-                   To manufacture superior quality Ayurvedic products through sustainable practices, innovation, and strict adherence to GMP standards, ensuring valid health outcomes for our community.
+                 <p className="text-foreground/80 leading-relaxed mb-6">
+                   To manufacture superior quality Ayurvedic products through sustainable practices, innovation, and strict adherence to GMP standards, ensuring valid health outcomes.
                  </p>
                </CardContent>
             </Card>
@@ -65,60 +68,65 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* ... (Heritage section remains mostly semantic HTML, maybe add Badge) ... */}
+      {/* Hub Navigation Grid */}
+      <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+               <div className="text-center mb-16">
+                  <h2 className="text-3xl md:text-4xl font-bold text-green-950 mb-4">Explore Our World</h2>
+                  <p className="text-lg text-gray-600">Dive deeper into the pillars that define our excellence.</p>
+               </div>
 
-      {/* Facilities & Standards */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Infrastructure & Quality</h2>
-              <p className="text-lg text-muted-foreground">
-                Where ancient wisdom meets cutting-edge technology. Our manufacturing units are designed to handle large-scale production without compromising on the delicate processes of Ayurveda.
-              </p>
-           </div>
-           
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="hover:shadow-lg transition-all border-border/50">
-                 <CardContent className="p-8">
-                   <Building2 className="w-10 h-10 text-primary mb-6" />
-                   <h3 className="text-xl font-bold text-foreground mb-3">Modern Factories</h3>
-                   <p className="text-muted-foreground">Equipped with automated processing lines for tablets, capsules, and liquids, complying with WHO-GMP norms.</p>
-                 </CardContent>
-              </Card>
-              <Card className="hover:shadow-lg transition-all border-border/50">
-                 <CardContent className="p-8">
-                   <ShieldCheck className="w-10 h-10 text-primary mb-6" />
-                   <h3 className="text-xl font-bold text-foreground mb-3">Quality Control</h3>
-                   <p className="text-muted-foreground">In-house labs for testing raw materials and finished products for heavy metals, microbial load, and potency.</p>
-                 </CardContent>
-              </Card>
-              <Card className="hover:shadow-lg transition-all border-border/50">
-                 <CardContent className="p-8">
-                   <Users2 className="w-10 h-10 text-primary mb-6" />
-                   <h3 className="text-xl font-bold text-foreground mb-3">Expert Team</h3>
-                   <p className="text-muted-foreground">Led by experienced Ayurvedic physicians and modern pharmaceutical technologists working in harmony.</p>
-                 </CardContent>
-              </Card>
-           </div>
-        </div>
+               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                   {/* Infrastructure Link */}
+                   <Link href="/about/facilities" className="group block h-full">
+                       <div className="bg-[#f0f4f0] rounded-2xl p-8 h-full transition-all duration-300 group-hover:bg-green-100 group-hover:shadow-lg border border-transparent group-hover:border-green-200">
+                           <Building2 className="w-12 h-12 text-green-800 mb-6 group-hover:scale-110 transition-transform" />
+                           <h3 className="text-2xl font-bold text-green-950 mb-4">Infrastructure</h3>
+                           <p className="text-gray-600 mb-6">
+                               Check out our Land Location, Production Blocks (Solid, Liquid, Extracts), and Industry 4.0 Automation.
+                           </p>
+                           <span className="text-green-800 font-bold inline-flex items-center">Explore Facilities <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"/></span>
+                       </div>
+                   </Link>
+
+                   {/* Team Link */}
+                   <Link href="/about/team" className="group block h-full">
+                       <div className="bg-[#fff9f0] rounded-2xl p-8 h-full transition-all duration-300 group-hover:bg-orange-100 group-hover:shadow-lg border border-transparent group-hover:border-orange-200">
+                           <Users2 className="w-12 h-12 text-orange-800 mb-6 group-hover:scale-110 transition-transform" />
+                           <h3 className="text-2xl font-bold text-orange-950 mb-4">Our Team</h3>
+                           <p className="text-gray-600 mb-6">
+                               Meet our Promoters, Ayurvedic Physicians, QA/QC Experts, and Regulatory Specialists.
+                           </p>
+                            <span className="text-orange-800 font-bold inline-flex items-center">Meet Leadership <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"/></span>
+                       </div>
+                   </Link>
+
+                   {/* Sustainability Link */}
+                   <Link href="/about/sustainability" className="group block h-full">
+                       <div className="bg-[#eaf4ff] rounded-2xl p-8 h-full transition-all duration-300 group-hover:bg-blue-100 group-hover:shadow-lg border border-transparent group-hover:border-blue-200">
+                           <Leaf className="w-12 h-12 text-blue-800 mb-6 group-hover:scale-110 transition-transform" />
+                           <h3 className="text-2xl font-bold text-blue-950 mb-4">CSR & Sustainability</h3>
+                           <p className="text-gray-600 mb-6">
+                               Learn about our Ethical Sourcing, Waste Management Practices, and Green Initiatives.
+                           </p>
+                            <span className="text-blue-800 font-bold inline-flex items-center">View Impact <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"/></span>
+                       </div>
+                   </Link>
+               </div>
+          </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-           <h2 className="text-3xl md:text-4xl font-bold mb-6">Partner with Us</h2>
-           <p className="text-xl text-primary-foreground/90 mb-10">
-             Whether you are looking for third-party manufacturing or authentic wellness products, we are your trusted partner.
-           </p>
-           <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button asChild size="lg" variant="secondary" className="text-primary font-bold">
-                <Link href="/contact">Contact Us</Link>
+      {/* Heritage Strip */}
+      <section className="bg-green-950 text-white py-16">
+          <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+              <div className="mb-6 md:mb-0">
+                  <h2 className="text-3xl font-bold mb-2">Our Company Story</h2>
+                  <p className="text-green-200">Tracing our roots back to the start.</p>
+              </div>
+              <Button asChild variant="secondary" size="lg" className="rounded-full px-8">
+                  <Link href="/about/company-story">Read Full History</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                <Link href="/services">Our Services</Link>
-              </Button>
-           </div>
-        </div>
+          </div>
       </section>
     </div>
   );

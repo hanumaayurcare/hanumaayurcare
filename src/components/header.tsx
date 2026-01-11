@@ -21,30 +21,17 @@ const Navbar: React.FC = () => {
   // Navigation items structure based on new sitemap
   const navItems: NavItem[] = [
     { label: 'Home', href: '/' },
-    { 
-      label: 'About', 
-      href: '/about',
-      dropdown: [
-        { label: 'Company Story', href: '/about/company-story' },
-        { label: 'Heritage', href: '/about/heritage' },
-        { label: 'Facilities', href: '/about/facilities' },
-        { label: 'Team', href: '/about/team' },
-        { label: 'Standards', href: '/about/standards' },
-      ]
-    },
+    { label: 'About', href: '/about' },
     { label: 'Products', href: '/products' },
-    { label: 'Manufacturing', href: '/manufacturing' },
+    { label: 'Manufacturing & Quality', href: '/manufacturing' },
     { label: 'Services', href: '/services' },
-    { label: 'R&D', href: '/rnd' },
-    { 
-      label: 'Knowledge', 
-      href: '/knowledge',
-      dropdown: [
-        { label: 'Blog', href: '/knowledge' },
-        { label: 'Certifications', href: '/certifications' },
-      ]
-    },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Hospital', href: 'https://hospital.hanumaayurcare.com', external: true },
+    { label: 'Pharmacy', href: 'https://pharmacy.hanumaayurcare.com', external: true },
+    { label: 'Tele-medicine', href: '/telemedicine' },
+    { label: 'R&D / Innovation', href: '/rnd' },
+    { label: 'Knowledge / Blog', href: '/knowledge' },
+    { label: 'Certifications', href: '/certifications' },
+    { label: 'Contact', href: '/contact', dropdown: [{ label: 'Enquiries', href: '/contact' }] },
   ];
 
   // Handle scroll effect for sticky navbar
@@ -70,7 +57,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'shadow-md bg-white/95 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-md'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[95%] mx-auto px-4">
         <div className="flex justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
@@ -86,7 +73,7 @@ const Navbar: React.FC = () => {
               </div>
               <div className="flex flex-col">
                 <h1 className="text-primary-800 font-bold text-lg leading-tight tracking-tight">HANUMA AYUR CARE</h1>
-                <span className="text-amber-600 text-[0.65rem] tracking-[0.2em] font-medium">ANCIENT WISDOM, MODERN SCIENCE</span>
+                <span className="text-amber-600 text-[0.65rem] tracking-[0.05em] font-medium">AYURVEDIC MANUFACTURING & WELLNESS</span>
               </div>
             </Link>
           </div>
@@ -98,7 +85,8 @@ const Navbar: React.FC = () => {
                 <div key={index} className="relative group/nav">
                   <Link 
                     href={item.href}
-                    className={`px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-md flex items-center gap-1
+                    target={item.external ? "_blank" : undefined}
+                    className={`px-2 py-2 text-xs xl:text-sm font-medium transition-colors duration-200 rounded-md flex items-center gap-1 whitespace-nowrap
                       ${isActive(item.href) 
                         ? 'text-primary-700 bg-primary-50' 
                         : 'text-gray-600 hover:text-primary-700 hover:bg-gray-50'
@@ -131,31 +119,6 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
-          {/* Right side items (External Actions) */}
-          <div className="hidden lg:flex lg:items-center gap-3 pl-4">
-             {/* Hospital Link */}
-             <a 
-              href="https://hospital.hanumaayurcare.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary-700 bg-white border border-primary-200 rounded-full hover:bg-primary-50 hover:border-primary-300 transition-colors"
-            >
-              <span>Hospital</span>
-              <ExternalLink className="w-3 h-3 opacity-50" />
-            </a>
-
-            {/* Shop Link */}
-            <a 
-              href="https://pharmacy.hanumaayurcare.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2 text-sm font-bold text-white bg-primary-700 rounded-full hover:bg-primary-800 shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
-            >
-              <ShoppingCart className="w-4 h-4" />
-              <span>Shop Now</span>
-            </a>
-          </div>
-
           {/* Mobile menu button */}
           <div className="flex items-center lg:hidden">
             <button 
@@ -176,6 +139,7 @@ const Navbar: React.FC = () => {
               <div key={index}>
                 <Link 
                   href={item.href}
+                  target={item.external ? "_blank" : undefined}
                   className={`block px-4 py-3 rounded-lg text-base font-medium ${isActive(item.href) ? 'text-primary-700 bg-primary-50' : 'text-gray-700 hover:bg-gray-50'}`}
                 >
                   {item.label}
@@ -196,28 +160,9 @@ const Navbar: React.FC = () => {
               </div>
             ))}
           </div>
-          
-          <div className="pt-6 border-t border-gray-100 flex flex-col gap-3">
-             <a 
-              href="https://hospital.hanumaayurcare.com" 
-              target="_blank"
-              rel="noopener noreferrer" 
-              className="w-full text-center py-3 rounded-lg border border-primary-200 text-primary-700 font-medium hover:bg-primary-50"
-            >
-              Visit Hospital
-            </a>
-            <a 
-              href="https://pharmacy.hanumaayurcare.com"
-              target="_blank"
-              rel="noopener noreferrer" 
-              className="w-full text-center py-3 rounded-lg bg-primary-700 text-white font-bold hover:bg-primary-800 flex justify-center items-center gap-2"
-            >
-              <ShoppingCart className="w-4 h-4" />
-              Shop Online
-            </a>
-          </div>
         </div>
       </div>
+
     </nav>
   );
 };

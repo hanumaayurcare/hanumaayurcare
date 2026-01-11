@@ -55,20 +55,38 @@ const AyurvedicHeroBanner = () => {
             <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto lg:mx-0">
                <div className="flex items-center gap-3 bg-white/50 p-3 rounded-lg border border-green-100">
                   <div className="text-[#c58f51]">
-                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                   </div>
                   <div className="text-left">
-                     <p className="text-xs text-green-600 font-semibold uppercase">Certified</p>
-                     <p className="text-sm font-bold text-green-900">GMP, AYUSH, ISO</p>
+                     <p className="text-xs text-green-600 font-semibold uppercase">Experience</p>
+                     <p className="text-sm font-bold text-green-900">100+ Years</p>
                   </div>
                </div>
                <div className="flex items-center gap-3 bg-white/50 p-3 rounded-lg border border-green-100">
                   <div className="text-[#c58f51]">
-                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                   </div>
                   <div className="text-left">
                      <p className="text-xs text-green-600 font-semibold uppercase">Capacity</p>
                      <p className="text-sm font-bold text-green-900">High Volume</p>
+                  </div>
+               </div>
+               <div className="flex items-center gap-3 bg-white/50 p-3 rounded-lg border border-green-100">
+                  <div className="text-[#c58f51]">
+                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  </div>
+                  <div className="text-left">
+                     <p className="text-xs text-green-600 font-semibold uppercase">Quality</p>
+                     <p className="text-sm font-bold text-green-900">GMP & ISO</p>
+                  </div>
+               </div>
+               <div className="flex items-center gap-3 bg-white/50 p-3 rounded-lg border border-green-100">
+                  <div className="text-[#c58f51]">
+                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  </div>
+                  <div className="text-left">
+                     <p className="text-xs text-green-600 font-semibold uppercase">Reach</p>
+                     <p className="text-sm font-bold text-green-900">Global Export</p>
                   </div>
                </div>
             </div>
