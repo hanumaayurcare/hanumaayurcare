@@ -40,8 +40,9 @@ export default function ContactPage() {
                               <h3 className="font-bold text-lg text-gray-900 mb-1">Head Office & Plant</h3>
                               <p className="text-gray-600 leading-relaxed">
                                   Hanuma Ayur Care,<br />
-                                  Industrial Area, Plot No. 45-B,<br />
-                                  Madhya Pradesh, India - 452001
+                                  2-5/1, Angalakuduru,<br />
+                                  Tenali Mandal, Guntur District,<br />
+                                  Andhra Pradesh – 522 211
                               </p>
                           </div>
                       </div>
@@ -52,8 +53,8 @@ export default function ContactPage() {
                           </div>
                           <div>
                               <h3 className="font-bold text-lg text-gray-900 mb-1">Phone</h3>
-                              <p className="text-gray-600 mb-1">+91 98765 43210 (General)</p>
-                              <p className="text-gray-600">+91 91234 56789 (B2B Sales)</p>
+                              <p className="text-gray-600 mb-1">9246594888 ; 6304413755</p>
+                              <p className="text-gray-600">08644 - 227888</p>
                           </div>
                       </div>
 
@@ -99,9 +100,6 @@ export default function ContactPage() {
                   <div className="flex flex-col sm:flex-row gap-4">
                       <button className="flex-1 bg-green-900 text-white font-bold py-4 rounded-xl hover:bg-green-800 transition-colors shadow-lg">
                           Schedule Plant Visit
-                      </button>
-                      <button className="flex-1 bg-white border border-green-900 text-green-900 font-bold py-4 rounded-xl hover:bg-green-50 transition-colors">
-                          Join Partner Network
                       </button>
                   </div>
               </div>
@@ -196,17 +194,6 @@ export default function ContactPage() {
                   )}
               </div>
           </div>
-          
-          {/* Map Section */}
-          <div className="mt-20 rounded-3xl overflow-hidden h-96 bg-gray-200 border border-gray-100 grayscale hover:grayscale-0 transition-all duration-500">
-               {/* Embed Google Map here. Using placeholder image for now */}
-               <div className="w-full h-full bg-[url('/hero/map-placeholder.jpg')] bg-cover bg-center flex items-center justify-center">
-                   <div className="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full text-green-900 font-bold shadow-lg">
-                       Google Map Integration
-                   </div>
-               </div>
-          </div>
-
       </div>
     </div>
   );
