@@ -6,7 +6,7 @@ export default function TelemedicinePage() {
     <div className="bg-white min-h-screen">
       {/* Hero */}
       <div className="bg-gradient-to-r from-[#1a4a2e] to-[#2d5036] py-24 text-white">
-          <div className="container mx-auto px-4 text-center">
+          <div className="max-w-7xl mx-auto px-4 text-center">
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
                   <Video className="w-8 h-8 text-white" />
               </div>
@@ -20,7 +20,7 @@ export default function TelemedicinePage() {
           </div>
       </div>
 
-      <div className="container mx-auto px-4 py-20">
+      <div className="max-w-7xl mx-auto px-4 py-20">
           {/* How it Works */}
           <div className="text-center mb-20">
               <h2 className="text-3xl font-bold text-green-950 mb-12">How It Works</h2>

@@ -49,6 +49,7 @@ export default function AdminLeadsPage() {
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
+      <div className="max-w-7xl mx-auto">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-gray-800">Leads & Enquiries</h1>
         <button onClick={fetchLeads} className="bg-white border p-2 rounded hover:bg-gray-100">
@@ -121,6 +122,7 @@ export default function AdminLeadsPage() {
           </table>
         </div>
       )}
+      </div>
     </div>
   );
 }

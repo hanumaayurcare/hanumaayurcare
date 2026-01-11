@@ -4,7 +4,7 @@ export default function CertificationsPage() {
   return (
     <div className="bg-white min-h-screen">
       <div className="bg-[#f3f6f3] py-20 text-center">
-         <div className="container mx-auto px-4">
+         <div className="max-w-7xl mx-auto px-4">
              <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-bold mb-6 uppercase tracking-wider">
                  <ShieldCheck className="w-4 h-4"/>
                  Compliance First
@@ -14,7 +14,7 @@ export default function CertificationsPage() {
          </div>
       </div>
 
-      <div className="container mx-auto px-4 py-20">
+      <div className="max-w-7xl mx-auto px-4 py-20">
          
          {/* Key Licenses */}
          <div className="mb-20">

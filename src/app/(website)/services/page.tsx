@@ -5,13 +5,13 @@ export default function ServicesPage() {
     <div className="bg-[#fcfdfc] min-h-screen">
       {/* Services Hero */}
       <div className="bg-[#0f4c28] py-20 text-white">
-         <div className="container mx-auto px-4 text-center">
+         <div className="max-w-7xl mx-auto px-4 text-center">
              <h1 className="text-4xl md:text-5xl font-bold mb-4">B2B Services</h1>
              <p className="text-lg text-green-100 max-w-2xl mx-auto">Comprehensive manufacturing solutions for Ayurvedic brands, startups, and international partners.</p>
          </div>
       </div>
 
-      <div className="container mx-auto px-4 py-20">
+      <div className="max-w-7xl mx-auto px-4 py-20">
          {/* Third Party Manufacturing */}
          <div className="flex flex-col md:flex-row gap-12 mb-24 items-start">
              <div className="flex-1 bg-white p-8 rounded-2xl shadow-xl border-t-4 border-[#c58f51]">

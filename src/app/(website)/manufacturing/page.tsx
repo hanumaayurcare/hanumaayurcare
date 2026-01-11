@@ -14,7 +14,7 @@ export default function ManufacturingPage() {
                 className="object-cover"
             />
         </div>
-        <div className="relative container mx-auto px-4 z-10 text-center">
+        <div className="relative max-w-7xl mx-auto px-4 z-10 text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">Manufacturing & Quality</h1>
             <p className="text-xl max-w-2xl mx-auto text-green-100">State-of-the-art facilities blending traditional Ayurvedic wisdom with modern Good Manufacturing Practices.</p>
         </div>
@@ -22,7 +22,7 @@ export default function ManufacturingPage() {
 
       {/* Facility Overview */}
       <section className="py-20 px-4">
-        <div className="container mx-auto">
+        <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
                 <div>
                    <h2 className="text-3xl font-bold text-green-950 mb-6">Facility Overview</h2>
@@ -110,7 +110,7 @@ export default function ManufacturingPage() {
       
       {/* Process Highlights CTA */}
       <section className="bg-[#1a4a2e] text-white py-16 text-center">
-         <div className="container mx-auto px-4">
+         <div className="max-w-7xl mx-auto px-4">
             <h2 className="text-3xl font-bold mb-6">Partner with a Manufacturer You Can Trust</h2>
             <p className="mb-8 max-w-2xl mx-auto text-green-100">From concept to commercialization, we ensure every product reflects the highest standards of safety and efficacy.</p>
             <div className="flex justify-center gap-4">

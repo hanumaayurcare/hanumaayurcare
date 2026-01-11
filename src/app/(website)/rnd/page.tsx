@@ -4,14 +4,14 @@ export default function RNDPage() {
   return (
     <div className="bg-white min-h-screen">
       <div className="bg-gradient-to-r from-gray-900 to-green-950 py-24 text-white">
-         <div className="container mx-auto px-4">
+         <div className="max-w-7xl mx-auto px-4">
              <span className="text-[#c58f51] font-bold tracking-widest text-sm uppercase mb-2 block">Innovation Center</span>
              <h1 className="text-4xl md:text-6xl font-bold mb-6">Research & Development</h1>
              <p className="text-lg text-gray-300 max-w-2xl">Bridging the gap between ancient texts and modern therapeutics through rigorous scientific validation.</p>
          </div>
       </div>
 
-      <div className="container mx-auto px-4 py-20">
+      <div className="max-w-7xl mx-auto px-4 py-20">
          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
              {/* Key Focus Areas */}
              <div>

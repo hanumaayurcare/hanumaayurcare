@@ -61,13 +61,13 @@ export default function ContactPage() {
   return (
     <div className="bg-background min-h-screen">
       <div className="bg-primary py-20 text-primary-foreground">
-         <div className="container mx-auto px-4 text-center">
+         <div className="max-w-7xl mx-auto px-4 text-center">
              <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
              <p className="text-primary-foreground/80">We'd love to hear from you. Reach out for manufacturing enquiries or general questions.</p>
          </div>
       </div>
 
-      <div className="container mx-auto px-4 py-20">
+      <div className="max-w-7xl mx-auto px-4 py-20">
          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
              {/* Contact Info */}
              <div>

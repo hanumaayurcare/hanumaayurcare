@@ -5,13 +5,13 @@ export default function KnowledgePage() {
   return (
     <div className="bg-[#fcfdfc] min-h-screen">
       <div className="bg-green-50 py-20 border-b border-green-100">
-         <div className="container mx-auto px-4 text-center">
+         <div className="max-w-7xl mx-auto px-4 text-center">
              <h1 className="text-4xl font-bold text-green-950 mb-4">Knowledge Center</h1>
              <p className="text-lg text-gray-600 max-w-2xl mx-auto">A hub for Ayurvedic wisdom, manufacturing insights, and regulatory guidance for brand owners.</p>
          </div>
       </div>
 
-      <div className="container mx-auto px-4 py-16">
+      <div className="max-w-7xl mx-auto px-4 py-16">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
               
               {/* Articles Section */}
