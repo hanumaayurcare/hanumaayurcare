@@ -1,108 +1,78 @@
-import { Users2, Award, Stethoscope, Microscope } from 'lucide-react';
+import { Users2, Linkedin, Mail } from 'lucide-react';
+import Image from 'next/image';
 
-export default function Team() {
+export default function TeamPage() {
+  const team = [
+    {
+      name: "Kumara Srinivas Chowdary",
+      role: "Managing Director",
+      experience: "36+ Years Exp",
+      bio: "Has exemplary knowledge of Ayurvedic formulations & medicines.",
+      image: "/team/placeholder-1.jpg" 
+    },
+    {
+      name: "CMA N S Subramanyam",
+      role: "Chief Financial Officer (CFO)",
+      experience: "30+ Years Exp",
+      bio: "A qualified Cost Accountant, CIMA, UK, with extensive experience in Finance.",
+      image: "/team/placeholder-2.jpg"
+    },
+    {
+      name: "Sarath Modali",
+      role: "Director of Operations",
+      experience: "38+ Years Exp",
+      bio: "Management Graduate with industry experience spanning Government, Manufacturing, and IT Services.",
+      image: "/team/placeholder-3.jpg"
+    }
+  ];
+
   return (
-    <div className="bg-white min-h-screen pt-24 pb-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-sm font-medium mb-6">
-            <Users2 className="w-4 h-4" />
-            <span>Leadership</span>
+    <div className="bg-white min-h-screen">
+      {/* Hero Section */}
+      <div className="relative bg-[#0d3b1f] py-24 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[url('/hero/team-bg.jpg')] bg-cover bg-center"></div>
+        <div className="relative max-w-7xl mx-auto px-4 z-10 text-center">
+             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-sm font-medium mb-6 backdrop-blur-sm">
+               <Users2 className="w-4 h-4" />
+               <span>Leadership</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Meet Our Team</h1>
+            <p className="text-xl max-w-2xl mx-auto text-green-100/90 leading-relaxed">
+               The visionaries and experts driving our mission to globalize Ayurveda.
+            </p>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+              {team.map((member, index) => (
+                  <div key={index} className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                      <div className="aspect-[4/3] bg-gray-100 relative overflow-hidden">
+                          {/* Placeholder for actual image */}
+                          <div className="absolute inset-0 bg-gray-200 flex items-center justify-center text-gray-400">
+                              <Users2 className="w-16 h-16 opacity-20" />
+                          </div>
+                          {/* <Image src={member.image} alt={member.name} fill className="object-cover" /> */}
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                              <div className="flex gap-4">
+                                  <a href="#" className="text-white hover:text-blue-400"><Linkedin className="w-5 h-5" /></a>
+                                  <a href="#" className="text-white hover:text-green-400"><Mail className="w-5 h-5" /></a>
+                              </div>
+                          </div>
+                      </div>
+                      <div className="p-8">
+                          <div className="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-bold rounded-full mb-4">
+                              {member.experience}
+                          </div>
+                          <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
+                          <p className="text-green-700 font-medium text-sm mb-4">{member.role}</p>
+                          <p className="text-gray-600 leading-relaxed text-sm">
+                              {member.bio}
+                          </p>
+                      </div>
+                  </div>
+              ))}
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-green-950 mb-6">Our People</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A diverse team of Vaidyas, Scientists, and Engineers driven by the common goal of global wellness.
-          </p>
-        </div>
-
-        {/* Promoters */}
-        <div className="mb-24">
-            <h2 className="text-3xl font-bold text-center text-green-900 mb-12">Promoters & Leadership</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-                <div className="bg-[#fff9f9] p-8 rounded-3xl border border-red-50 text-center">
-                    <div className="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-6 grayscale overflow-hidden">
-                        {/* Image Placeholder */}
-                    </div>
-                    <h3 className="text-2xl font-bold text-green-950 mb-2">Dr. [Promoter Name]</h3>
-                    <p className="text-red-800 font-medium mb-4">Founder & Chief Physician</p>
-                    <p className="text-gray-600 text-sm">
-                        With over 40 years of clinical experience, Dr. [Name] is the visionary behind our classical formulations. His deep understanding of the scriptures guides our R&D.
-                    </p>
-                </div>
-                <div className="bg-[#fff9f9] p-8 rounded-3xl border border-red-50 text-center">
-                    <div className="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-6 grayscale overflow-hidden">
-                        {/* Image Placeholder */}
-                    </div>
-                     <h3 className="text-2xl font-bold text-green-950 mb-2">Mr. [Co-Founder Name]</h3>
-                     <p className="text-red-800 font-medium mb-4">Managing Director</p>
-                     <p className="text-gray-600 text-sm">
-                        Bringing modern management practices to Ayurveda, ensuring operational excellence and global expansion.
-                     </p>
-                </div>
-            </div>
-        </div>
-
-        {/* Team Sections Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Physicians */}
-            <div className="bg-green-50 rounded-2xl p-8 hover:shadow-lg transition-all">
-                <Stethoscope className="w-10 h-10 text-green-700 mb-6" />
-                <h3 className="text-xl font-bold text-green-900 mb-4">Ayurvedic Physicians Panel</h3>
-                <p className="text-gray-600 text-sm mb-6">
-                    A dedicated team of BAMS and MD (Ayurveda) doctors who oversee formulation accuracy and provide tele-consultations.
-                </p>
-                <div className="space-y-2">
-                    <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-green-200"></div>
-                        <span className="font-medium text-sm">Dr. [Name] - Kaya Chikitsa</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-green-200"></div>
-                         <span className="font-medium text-sm">Dr. [Name] - Dravya Guna</span>
-                    </div>
-                </div>
-            </div>
-
-            {/* QA/QC */}
-            <div className="bg-blue-50 rounded-2xl p-8 hover:shadow-lg transition-all">
-                <Microscope className="w-10 h-10 text-blue-700 mb-6" />
-                <h3 className="text-xl font-bold text-blue-900 mb-4">QA & QC Experts</h3>
-                <p className="text-gray-600 text-sm mb-6">
-                    Chemists and microbiologists ensuring every batch meets rigorous purity standards.
-                </p>
-                 <div className="space-y-2">
-                    <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-blue-200"></div>
-                        <span className="font-medium text-sm">Head of Quality</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-blue-200"></div>
-                         <span className="font-medium text-sm">Sr. Microbiologist</span>
-                    </div>
-                </div>
-            </div>
-
-            {/* Regulatory */}
-            <div className="bg-orange-50 rounded-2xl p-8 hover:shadow-lg transition-all">
-                <Award className="w-10 h-10 text-orange-700 mb-6" />
-                <h3 className="text-xl font-bold text-orange-900 mb-4">Regulatory & Production</h3>
-                <p className="text-gray-600 text-sm mb-6">
-                    Experts in GMP compliance, documentation, and managing large-scale manufacturing operations.
-                </p>
-                 <div className="space-y-2">
-                    <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-orange-200"></div>
-                        <span className="font-medium text-sm">Plant Manager</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-orange-200"></div>
-                         <span className="font-medium text-sm">Regulatory Affairs Lead</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
       </div>
     </div>
   );

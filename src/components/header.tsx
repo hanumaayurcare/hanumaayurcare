@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ShoppingCart, User, Search, ExternalLink } from 'lucide-react';
+import { dosageForms } from '@/src/lib/productCategories';
 
 interface NavItem {
   label: string;
@@ -36,8 +37,10 @@ const Navbar: React.FC = () => {
       href: '/products',
       dropdown: [
         { label: 'All Products', href: '/products' },
-        { label: 'Classical Range', href: '/products/classical' },
-        { label: 'Proprietary Range', href: '/products/proprietary' }
+        ...dosageForms.map(cat => ({
+            label: cat.name,
+            href: `/products/${cat.slug}`
+        }))
       ]
     },
     { 

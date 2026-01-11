@@ -1,6 +1,18 @@
+"use client";
+
 import Link from 'next/link';
+import { useState } from 'react';
+import RequestQuoteModal from '@/src/components/RequestQuoteModal';
 
 export default function ServicesPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState('');
+
+  const openQuoteModal = (service: string) => {
+    setSelectedService(service);
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="bg-[#fcfdfc] min-h-screen">
       {/* Services Hero */}
@@ -24,7 +36,7 @@ export default function ServicesPage() {
                  <ul className="space-y-2 mb-8">
                      <li className="flex items-center text-gray-700">
                          <span className="w-1.5 h-1.5 bg-[#c58f51] rounded-full mr-3"></span>
-                         Scalable Batch Sizes
+                         Scalable Batch Sizes   
                      </li>
                      <li className="flex items-center text-gray-700">
                          <span className="w-1.5 h-1.5 bg-[#c58f51] rounded-full mr-3"></span>
@@ -32,16 +44,19 @@ export default function ServicesPage() {
                      </li>
                      <li className="flex items-center text-gray-700">
                          <span className="w-1.5 h-1.5 bg-[#c58f51] rounded-full mr-3"></span>
-                         FSSAI & AYUSH Compliance Support
+                         GMP & AYUSH Compliance Support
                      </li>
                      <li className="flex items-center text-gray-700">
                          <span className="w-1.5 h-1.5 bg-[#c58f51] rounded-full mr-3"></span>
                          Packaging Development Assistance
                      </li>
                  </ul>
-                 <Link href="/contact?service=contract_mfg" className="bg-green-900 text-white font-medium px-6 py-3 rounded-lg hover:bg-green-800 transition-colors inline-block w-full text-center">
+                 <button 
+                    onClick={() => openQuoteModal('Third-Party Manufacturing')}
+                    className="bg-green-900 text-white font-medium px-6 py-3 rounded-lg hover:bg-green-800 transition-colors inline-block w-full text-center"
+                 >
                      Request Quote
-                 </Link>
+                 </button>
              </div>
 
              <div className="flex-1 bg-white p-8 rounded-2xl shadow-xl border-t-4 border-[#3f6b4c]">
@@ -69,9 +84,12 @@ export default function ServicesPage() {
                          Marketing & Technical Support
                      </li>
                  </ul>
-                 <Link href="/contact?service=private_label" className="border-2 border-green-900 text-green-900 font-medium px-6 py-3 rounded-lg hover:bg-green-50 transition-colors inline-block w-full text-center">
-                     View Product Catalog
-                 </Link>
+                 <button 
+                    onClick={() => openQuoteModal('Private Label')}
+                    className="border-2 border-green-900 text-green-900 font-medium px-6 py-3 rounded-lg hover:bg-green-50 transition-colors inline-block w-full text-center"
+                 >
+                      Request Quote
+                 </button>
              </div>
          </div>
 
@@ -96,6 +114,12 @@ export default function ServicesPage() {
                          <p className="text-sm text-gray-600">Secure packing and shipping coordination.</p>
                      </div>
                  </div>
+                 <button 
+                    onClick={() => openQuoteModal('Export OEM')}
+                    className="bg-green-800 text-white font-medium px-8 py-3 rounded-lg hover:bg-green-700 transition-colors shadow-lg"
+                 >
+                     Contact for Export
+                 </button>
              </div>
          </div>
 
@@ -126,6 +150,12 @@ export default function ServicesPage() {
              </div>
          </div>
       </div>
+      
+      <RequestQuoteModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        defaultService={selectedService} 
+      />
     </div>
   );
 }
