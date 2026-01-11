@@ -109,20 +109,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Client Logos */}
-      <section className="py-16 bg-[#fcfdfc] border-y border-green-50">
-         <div className="max-w-7xl mx-auto px-4 text-center">
-             <p className="text-sm font-semibold text-green-600 uppercase tracking-widest mb-8">Trusted by Leading Brands</p>
-             <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                 {/* Placeholders for Logos */}
-                 {['Brand A', 'Brand B', 'Brand C', 'Brand D', 'Brand E'].map((brand, i) => (
-                    <div key={i} className="text-2xl font-bold text-gray-400 border border-gray-200 px-6 py-2 rounded-lg">{brand}</div>
-                 ))}
-             </div>
-         </div>
-      </section>
-
-
       {/* Testimonials */}
       <Testimonials />
 

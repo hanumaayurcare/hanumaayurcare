@@ -39,15 +39,10 @@ const AyurvedicHeroBanner = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-10 justify-center lg:justify-start">
               <Button asChild size="lg" className="h-14 px-8 text-lg rounded-full shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all">
-                <Link href="/manufacturing">
-                  Enquire for Manufacturing
+                <Link href="/products">
+                 View Products
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full border-2 border-primary text-primary hover:bg-primary/5 hover:text-primary transition-all">
-                <a href="https://pharmacy.hanumaayurcare.com" target="_blank" rel="noopener noreferrer">
-                  Shop Products
-                </a>
               </Button>
             </div>
 
