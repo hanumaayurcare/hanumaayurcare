@@ -21,17 +21,50 @@ const Navbar: React.FC = () => {
   // Navigation items structure based on new sitemap
   const navItems: NavItem[] = [
     { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Products', href: '/products' },
-    { label: 'Manufacturing & Quality', href: '/manufacturing' },
+    { 
+      label: 'About', 
+      href: '/about',
+      dropdown: [
+        { label: 'Company Story', href: '/about/company-story' },
+        { label: 'Infrastructure', href: '/about/facilities' },
+        { label: 'Our Team', href: '/about/team' },
+        { label: 'Sustainability', href: '/about/sustainability' }
+      ]
+    },
+    { 
+      label: 'Products', 
+      href: '/products',
+      dropdown: [
+        { label: 'All Products', href: '/products' },
+        { label: 'Classical Range', href: '/products/classical' },
+        { label: 'Proprietary Range', href: '/products/proprietary' }
+      ]
+    },
+    { 
+      label: 'Manufacturing', 
+      href: '/manufacturing',
+      dropdown: [
+        { label: 'Facility Overview', href: '/manufacturing/facility' },
+        { label: 'Quality Systems', href: '/manufacturing/quality' },
+        { label: 'Process & Compliance', href: '/manufacturing/process' }
+      ]
+    },
     { label: 'Services', href: '/services' },
     { label: 'Hospital', href: 'https://hospital.hanumaayurcare.com', external: true },
     { label: 'Pharmacy', href: 'https://pharmacy.hanumaayurcare.com', external: true },
     { label: 'Tele-medicine', href: '/telemedicine' },
     { label: 'R&D / Innovation', href: '/rnd' },
-    { label: 'Knowledge / Blog', href: '/knowledge' },
+    { 
+      label: 'Knowledge', 
+      href: '/knowledge',
+      dropdown: [
+        { label: 'Articles', href: '/knowledge/articles' },
+        { label: 'Resources', href: '/knowledge/resources' },
+        { label: 'FAQs', href: '/knowledge/faq' }
+      ]
+    },
     { label: 'Certifications', href: '/certifications' },
-    { label: 'Contact', href: '/contact', dropdown: [{ label: 'Enquiries', href: '/contact' }] },
+    { label: 'Contact', href: '/contact' },
   ];
 
   // Handle scroll effect for sticky navbar

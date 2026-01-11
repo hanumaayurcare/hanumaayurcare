@@ -1,95 +1,78 @@
-import { FileText, Download, HelpCircle, BookOpen } from 'lucide-react';
+import { BookOpen, Download, HelpCircle, ArrowRight, Lightbulb } from 'lucide-react';
 import Link from 'next/link';
 
-export default function KnowledgePage() {
+export default function KnowledgeHub() {
   return (
-    <div className="bg-[#fcfdfc] min-h-screen">
-      <div className="bg-green-50 py-20 border-b border-green-100">
-         <div className="max-w-7xl mx-auto px-4 text-center">
-             <h1 className="text-4xl font-bold text-green-950 mb-4">Knowledge Center</h1>
-             <p className="text-lg text-gray-600 max-w-2xl mx-auto">A hub for Ayurvedic wisdom, manufacturing insights, and regulatory guidance for brand owners.</p>
-         </div>
+    <div className="bg-white min-h-screen">
+      
+      {/* Hero Section */}
+      <div className="relative bg-[#0d3b1f] py-6 lg:py-32 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[url('/hero/knowledge-bg.jpg')] bg-cover bg-center"></div>
+        <div className="relative max-w-7xl mx-auto px-4 z-10 text-center">
+             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/20 border border-yellow-400/30 text-yellow-100 text-sm font-medium mb-6 backdrop-blur-sm">
+               <Lightbulb className="w-4 h-4" />
+               <span>Knowledge Center</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Ayurveda Knowledge Hub</h1>
+            <p className="text-xl max-w-2xl mx-auto text-green-100/90 leading-relaxed">
+               Empowering you with authentic information. Whether you are a brand owner looking for manufacturing insights or a seeker of ancient wisdom.
+            </p>
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-              
-              {/* Articles Section */}
-              <div className="lg:col-span-2">
-                  <div className="flex items-center gap-3 mb-8">
-                     <BookOpen className="w-6 h-6 text-[#c58f51]" />
-                     <h2 className="text-2xl font-bold text-green-900">Latest Articles</h2>
-                  </div>
-                  
-                  <div className="space-y-8">
-                      {/* Sample Article 1 */}
-                      <article className="bg-white p-6 rounded-xl shadow-sm border border-green-50 hover:shadow-md transition-shadow">
-                          <span className="text-xs font-bold text-[#c58f51] uppercase tracking-wider">Manufacturing</span>
-                          <h3 className="text-xl font-bold text-green-900 mt-2 mb-3">Understanding the Importance of Standardization in Herbo-mineral Formulations</h3>
-                          <p className="text-gray-600 mb-4 text-sm line-clamp-3">Standardization ensures consistency, safety, and efficacy in Ayurvedic medicines. Learn how modern analytical techniques like HPLC differ from traditional parikshas.</p>
-                          <Link href="#" className="text-green-700 font-semibold text-sm hover:underline">Read More →</Link>
-                      </article>
+      {/* Hub Grid */}
+      <section className="py-24 bg-[#fcfdfc]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                   
+                   {/* Articles Link */}
+                   <Link href="/knowledge/articles" className="group block h-full">
+                       <div className="bg-white rounded-3xl p-10 h-full shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-300 group-hover:-translate-y-2 relative overflow-hidden">
+                           <div className="absolute top-0 right-0 w-32 h-32 bg-green-100 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-110"></div>
+                           <BookOpen className="w-12 h-12 text-green-600 mb-8 relative z-10" />
+                           <h3 className="text-2xl font-bold text-green-950 mb-4 relative z-10">Articles & Insights</h3>
+                           <p className="text-gray-600 mb-8 leading-relaxed relative z-10">
+                               Read about Ayurvedic approaches to common conditions, herb monographs, and manufacturing quality standards.
+                           </p>
+                           <span className="text-green-700 font-bold inline-flex items-center relative z-10 group-hover:gap-2 transition-all">
+                              Read Articles <ArrowRight className="w-5 h-5 ml-2" />
+                           </span>
+                       </div>
+                   </Link>
 
-                       {/* Sample Article 2 */}
-                       <article className="bg-white p-6 rounded-xl shadow-sm border border-green-50 hover:shadow-md transition-shadow">
-                          <span className="text-xs font-bold text-[#c58f51] uppercase tracking-wider">Ayurveda</span>
-                          <h3 className="text-xl font-bold text-green-900 mt-2 mb-3">Seasonal Regimens (Ritucharya) for Immunity</h3>
-                          <p className="text-gray-600 mb-4 text-sm line-clamp-3">A guide to adapting your product portfolio according to seasonal changes to meet consumer demand for immunity boosters.</p>
-                          <Link href="#" className="text-green-700 font-semibold text-sm hover:underline">Read More →</Link>
-                      </article>
-                  </div>
-              </div>
+                   {/* Resources Link */}
+                   <Link href="/knowledge/resources" className="group block h-full">
+                       <div className="bg-white rounded-3xl p-10 h-full shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-300 group-hover:-translate-y-2 relative overflow-hidden">
+                           <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-110"></div>
+                           <Download className="w-12 h-12 text-blue-600 mb-8 relative z-10" />
+                           <h3 className="text-2xl font-bold text-green-950 mb-4 relative z-10">Downloads</h3>
+                           <p className="text-gray-600 mb-8 leading-relaxed relative z-10">
+                               Access downloadable resources including Product Catalogs (PDF), Brochures, and Regulatory Guidelines.
+                           </p>
+                           <span className="text-blue-700 font-bold inline-flex items-center relative z-10 group-hover:gap-2 transition-all">
+                              View Resources <ArrowRight className="w-5 h-5 ml-2" />
+                           </span>
+                       </div>
+                   </Link>
 
-              {/* Sidebar Resources */}
-              <div className="space-y-8">
-                  {/* Downloads */}
-                  <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                      <div className="flex items-center gap-3 mb-4">
-                          <Download className="w-5 h-5 text-green-700" />
-                          <h3 className="font-bold text-lg text-green-900">Downloads</h3>
-                      </div>
-                      <ul className="space-y-3">
-                          <li>
-                              <a href="#" className="flex items-center text-sm text-gray-700 hover:text-green-700 group">
-                                  <span className="bg-green-100 p-2 rounded-md mr-3 group-hover:bg-green-200"><FileText className="w-4 h-4"/></span>
-                                  Product Catalog (PDF)
-                              </a>
-                          </li>
-                          <li>
-                              <a href="#" className="flex items-center text-sm text-gray-700 hover:text-green-700 group">
-                                  <span className="bg-green-100 p-2 rounded-md mr-3 group-hover:bg-green-200"><FileText className="w-4 h-4"/></span>
-                                  B2B Brochure
-                              </a>
-                          </li>
-                          <li>
-                              <a href="#" className="flex items-center text-sm text-gray-700 hover:text-green-700 group">
-                                  <span className="bg-green-100 p-2 rounded-md mr-3 group-hover:bg-green-200"><FileText className="w-4 h-4"/></span>
-                                  Ayurvedic Brand Checklist
-                              </a>
-                          </li>
-                      </ul>
-                  </div>
-
-                  {/* FAQs */}
-                  <div className="bg-[#f3f6f3] p-6 rounded-xl">
-                      <div className="flex items-center gap-3 mb-4">
-                          <HelpCircle className="w-5 h-5 text-green-700" />
-                          <h3 className="font-bold text-lg text-green-900">B2B FAQs</h3>
-                      </div>
-                      <div className="space-y-4 text-sm">
-                          <div>
-                              <p className="font-semibold text-green-800">What is the MOQ for Private Label?</p>
-                              <p className="text-gray-600 mt-1">Our MOQs for private label start as low as 500 units per SKU depending on the formulation.</p>
-                          </div>
-                          <div>
-                              <p className="font-semibold text-green-800">Do you help with FSSAI?</p>
-                              <p className="text-gray-600 mt-1">Yes, our regulatory team provides full documentation support for license applications.</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+                   {/* FAQ Link */}
+                   <Link href="/knowledge/faq" className="group block h-full">
+                       <div className="bg-white rounded-3xl p-10 h-full shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-300 group-hover:-translate-y-2 relative overflow-hidden">
+                           <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-100 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-110"></div>
+                           <HelpCircle className="w-12 h-12 text-yellow-600 mb-8 relative z-10" />
+                           <h3 className="text-2xl font-bold text-green-950 mb-4 relative z-10">FAQs</h3>
+                           <p className="text-gray-600 mb-8 leading-relaxed relative z-10">
+                               Find answers to common questions about MOQs, Timelines, Pricing for B2B, and Product Safety for Consumers.
+                           </p>
+                           <span className="text-yellow-700 font-bold inline-flex items-center relative z-10 group-hover:gap-2 transition-all">
+                              Get Answers <ArrowRight className="w-5 h-5 ml-2" />
+                           </span>
+                       </div>
+                   </Link>
+               </div>
           </div>
-      </div>
+      </section>
+
     </div>
   );
 }
